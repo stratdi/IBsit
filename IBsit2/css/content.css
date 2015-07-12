@@ -16,6 +16,26 @@
 }
 
 .mdl-card.mdl-shadow--2dp.demo-card-image {
-  width: 100%;
+	width: 100%;
 }
 
+/* Grid - Casilla */
+.mdl-cell.mdl-cell--3-col:hover .mdl-card__actions {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mdl-cell.mdl-cell--3-col .mdl-card__actions {
+	background-color: rgba(0, 0, 0, 0.4);
+	-webkit-transition: color 1s ease-in;
+	-moz-transition: color 1s ease-in;
+	-o-transition: color 1s ease-in;
+	transition: color 1s ease-in;
+}
+
+.mdl-cell.mdl-cell--3-col:hover .demo-card-image__filename {
+	color: #000000;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
