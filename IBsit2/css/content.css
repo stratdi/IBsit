@@ -2,7 +2,8 @@
 .demo-card-image.mdl-card {
 	width: 256px;
 	height: 256px;
-	background: url('../images/attack-on-titan.jpg') center/cover;
+	/*background: url('../images/attack-on-titan.jpg') center/cover;*/
+	cursor:pointer;
 }
 
 .demo-card-image>.mdl-card__actions {

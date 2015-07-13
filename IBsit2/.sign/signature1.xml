@@ -4,15 +4,15 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>3dVVIVQyUURg1+qJ4MsoxFqY5e7oA0oPZ/ylkOYOFvQ=</DigestValue>
+<DigestValue>uc0u7wRJOOdBo1xPo8ciIci9eWBbbYaXrLCEjwXwjrA=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Uq+NBwfQZ72GsU8kqjehT2rYxU1KyxxuXD6b3uxNyCg=</DigestValue>
+<DigestValue>Jf0dmM6lXlGQGAlYffyTPPBWc/ARWBVvBIoGo5qpiAs=</DigestValue>
 </Reference>
 <Reference URI="css%2Fcontent.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>jI53nNeYfIQLQALBn/aJL/7JmyjczYFJtIRfhiLCibE=</DigestValue>
+<DigestValue>xE6a92EMU3WFYM0vuOpI+y2zpGYKRuUlh6iXKteKHSI=</DigestValue>
 </Reference>
 <Reference URI="css%2Fmenu.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -32,11 +32,19 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>kxgbh7ZAFdKFzkTa9WA0UM094/CpGOvO9/GZU0WuuBE=</DigestValue>
+<DigestValue>SGSfMPPRLf+Oo2BfzlkwEXDxiP/essPZRbPyfCo/1mc=</DigestValue>
+</Reference>
+<Reference URI="js%2Fgrid.js">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>hmEtoyrpEhvSuCsqTtAP/fuDJncqwzvb2czzu7bVIwA=</DigestValue>
+</Reference>
+<Reference URI="js%2Fjquery-git2.min.js">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>N/a6O3oBtAU5U0NwAlrcnl8B7HRmDoYVWgKkLPqwdCc=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>6fA1B5e6cJr7/TXTTha8tYjedskeRlYmCZsEDI/WWI0=</DigestValue>
+<DigestValue>fXniZCMhnn07uHnFkH3Xp9/YA/RTBR/bvCJlVR2YiGc=</DigestValue>
 </Reference>
 <Reference URI="mdl%2FLICENSE">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -99,9 +107,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-pqSxOgS0g5LrCOU/+rTBqISFn69YbVb+ZhLi86lLsG5sMz3uhA4e8eWJIFisjTUiIJMqSATeED5C
-KEVcoGxuPjarVyoeLDeG6QGVPwQ2N9RT5ED5afVQg7kUY2nCJv6LO2cEoKIn/4Tuyby5wFqgvE5k
-amKF6764hzorGrgOKwg=
+IHxjckP3w9lI6gUjQYogK1NV2mPgsg6hg23eI1/Aqf7wLr0cOsfkUhfqT0doo7qV2ssniu60RyoN
+N8yJkK4aodLxi29PftZWst0fItRqVZIw4As+DSQARMlKQEoz4HOFv81pTZzfQay9vBNU41V3k0M7
+JWzIsmQu/Ersxzs/JwM=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -55,24 +55,3 @@ function checkTime(i) {
 	}
 	return i;
 }
-
-function getAllMedia() {
-	$.ajax({
-		url : 'http://recerca-ltim.uib.es/~atb/ajax/getAllTagsMediaR.php',
-		async : false,
-		contentType : "application/json",
-		dataType : 'jsonp',
-		data : {
-			id : '0'
-		},
-		success : function(response) {
-			//response.data.tags devuelve categorias
-			// response.data.medias devuelve todos los media
-			console.log(response.data.medias[0]);
-			console.log('Success!');
-		},
-		error : function() {
-			console.log('Uh Oh!');
-		}
-	});
-}
