@@ -4,15 +4,15 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>uc0u7wRJOOdBo1xPo8ciIci9eWBbbYaXrLCEjwXwjrA=</DigestValue>
+<DigestValue>F7gOfSE2nNOcmRraecX4p+dDjPsmFrAMgcJJYDpyFmQ=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Jf0dmM6lXlGQGAlYffyTPPBWc/ARWBVvBIoGo5qpiAs=</DigestValue>
+<DigestValue>N7ORGNjHnWXDkx68sBJCS6ZQGfR5gNRtdTY5JEJ8D+w=</DigestValue>
 </Reference>
 <Reference URI="css%2Fcontent.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>xE6a92EMU3WFYM0vuOpI+y2zpGYKRuUlh6iXKteKHSI=</DigestValue>
+<DigestValue>4r+e8QDEfg9OOXvG3nt9Wbcg3ycg6Hbemmq6pkSw7wg=</DigestValue>
 </Reference>
 <Reference URI="css%2Fmenu.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -32,11 +32,11 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>SGSfMPPRLf+Oo2BfzlkwEXDxiP/essPZRbPyfCo/1mc=</DigestValue>
+<DigestValue>nglAKUuaX7pNxANGTK+dV1tbhifttondHYGGCwC6cCU=</DigestValue>
 </Reference>
 <Reference URI="js%2Fgrid.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>hmEtoyrpEhvSuCsqTtAP/fuDJncqwzvb2czzu7bVIwA=</DigestValue>
+<DigestValue>w8yftSLhoeYzovY2luwiceotO6oQMdV8bNYZKZyMCK8=</DigestValue>
 </Reference>
 <Reference URI="js%2Fjquery-git2.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -44,7 +44,7 @@
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>fXniZCMhnn07uHnFkH3Xp9/YA/RTBR/bvCJlVR2YiGc=</DigestValue>
+<DigestValue>/LezyVMN9n5oP46aX1i0FDTVGRm9g/USL+CsapaLzIY=</DigestValue>
 </Reference>
 <Reference URI="mdl%2FLICENSE">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -107,9 +107,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-IHxjckP3w9lI6gUjQYogK1NV2mPgsg6hg23eI1/Aqf7wLr0cOsfkUhfqT0doo7qV2ssniu60RyoN
-N8yJkK4aodLxi29PftZWst0fItRqVZIw4As+DSQARMlKQEoz4HOFv81pTZzfQay9vBNU41V3k0M7
-JWzIsmQu/Ersxzs/JwM=
+mzlvzHLugTCbZr9xoGibE2iu1H6xr+4Eipbxu7C0/L4vasbuD6FQmtWtB51WUSNPFUG7ot6whZDB
+eTKtjtrknsh4cuSRSc/8AOfsmZxIsEN7jN11C8Q8cRtwGEEzRTWrjmgGsXU4jWKr2fN2XJPMjztc
+Kxe2ya0T2BvYcvgul4k=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets"
-	id="http://yourdomain/IBsit2" version="1.0.0" viewmodes="maximized">
-	<tizen:application id="VovwmUlPym.IBsit2" package="VovwmUlPym"
-		required_version="2.3" />
-	<content src="index.html" />
-	<tizen:content-security-policy>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/IBsit2" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="VovwmUlPym.IBsit2" package="VovwmUlPym" required_version="2.3"/>
+    <content src="index.html"/>
+    <tizen:content-security-policy>
 		script-src: 'self'
 	</tizen:content-security-policy>
-	<feature name="http://tizen.org/feature/screen.size.normal.1080.1920" />
-	<icon src="icon.png" />
-	<name>IBsit2</name>
-	<tizen:profile name="tv" />
+    <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <feature name="http://www.samsungdforum.com/feature/Gesture"/>
+    <feature name="http://www.samsungdforum.com/feature/Mouse"/>
+    <icon src="icon.png"/>
+    <name>IBsit2</name>
+    <tizen:profile name="tv"/>
 </widget>

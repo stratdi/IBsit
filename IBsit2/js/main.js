@@ -7,7 +7,9 @@ var init = function() {
 	console.log("init() called");
 
 	// add eventListener for keydown
-	document.addEventListener('keydown', function(e) {
+	$(document).bind('keydown', function(e) {
+		console.log("Key code : " + e.keyCode);
+
 		switch (e.keyCode) {
 		case 37: // LEFT arrow
 			alert("hola");
