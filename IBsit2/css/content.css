@@ -25,11 +25,27 @@
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
+.demo-card-image>.mdl-card__actions {
+	height: 68px;
+}
+
 .cell-selected {
 	background-color: rgba(255, 255, 255, 0.5);
 	line-height: 18px;
 	overflow: hidden;
-  padding: 16px;
+	padding: 16px;
+	color:black;
+}
+.mdl-card__actions *{
+	color:white;
+}
+
+.cell-selected * {
+	color:black;
+}
+
+.meta-info-black{
+	color:black;
 }
 
 .mdl-cell.mdl-cell--3-col .mdl-card__actions {
@@ -40,7 +56,7 @@
 	transition: color 1s ease-in;
 }
 
-.mdl-cell.mdl-cell--3-col:hover .demo-card-image__filename {
+.mdl-cell.mdl-cell--3-col:hover * {
 	color: #000000;
 }
 
@@ -54,7 +70,7 @@
 	height: 50px;
 	position: absolute;
 	left: calc(50% - 25px);
-	z-index: 9;
+	z-index: 1;
 }
 
 .scroll .mdl-button {
@@ -78,5 +94,6 @@
 }
 
 .minilogo i.material-icons {
-  float: right;
+	float: right;
+	font-size:2.4em;
 }

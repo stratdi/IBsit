@@ -1,5 +1,5 @@
-var current_pos = 0;
 var total_medias;
+
 /**
  * Función que devuelve todo el contenido media de la base de datos de ATB
  */
@@ -73,10 +73,10 @@ function homeGrid(medias) {
 					+ medias[i].id
 					+ "/icon.jpg) center/cover;'>\n"
 					+ "<div class='mdl-card__title mdl-card--expand'></div>\n"
-					+ "<div class='mdl-card__actions meta mdl-color-text--grey-600'>\n"
+					+ "<div class='mdl-card__actions meta'>\n"
 					+ "<div class='minilogo'><i class='material-icons'>&#xE532;</i></div>"
-					+ "<div class='demo-card-image__small'>"
-					+ medias[i].location + "</div>"
+					+ "<div class='demo-card-image__small'><strong>"
+					+ medias[i].location + "</strong></div>"
 					+ "<div class='demo-card-image__filename'>"
 					+ medias[i].name + "</div>" + "</div></div></div>";
 
@@ -89,6 +89,7 @@ function homeGrid(medias) {
 	$(".page-content").empty().append(grid);
 	homeScroll();
 	homeGridController();
+
 }
 
 function homeScroll() {
@@ -118,101 +119,17 @@ function homeScroll() {
 	$(".scroll").css("padding-left", padding / 2);
 }
 
-function homeGridController() {
-
-	$(document).unbind('keydown');
-	$(document).bind('keydown', function(e) {
-
-		switch (e.keyCode) {
-		case 37:
-			moveLeft();
-			break;
-		case 38:
-			moveUp();
-			e.preventDefault();
-			break;
-		case 39:
-			moveRight();
-			break;
-		case 40:
-			moveDown();
-			e.preventDefault();
-			break;
-		case 13: // OK button
-			// reproduceVideo
-			break;
-		case 10009: // RETURN button
-			// menu
-			break;
-		case 10182:
-			alert("dewww");
-			tizen.application.getCurrentApplication().exit();
-			break;
-		default:
-			console.log("Key code : " + e.keyCode);
-			break;
-		}
-	});
-}
-
-function moveLeft() {
-	unselectMedia(current_pos);
-
-	if (current_pos - 1 >= 0) {
-		current_pos -= 1;
-	}
-	selectMedia(current_pos);
-
-	console.log("left ", current_pos);
-}
-
-function moveRight() {
-	unselectMedia(current_pos);
-
-	if (current_pos + 1 < total_medias) {
-		current_pos += 1;
-	}
-
-	selectMedia(current_pos);
-
-	console.log("right ", current_pos);
-}
-
-function moveUp() {
-	unselectMedia(current_pos);
-
-	if (current_pos - 4 >= 0) {
-		current_pos -= 4;
-	} else {
-		current_pos = 0;
-	}
-
-	selectMedia(current_pos);
-	console.log("up ", current_pos);
-}
-
-function moveDown() {
-	unselectMedia(current_pos);
-
-	if (current_pos + 4 < total_medias) {
-		current_pos += 4;
-	} else {
-		current_pos = total_medias - 1;
-	}
-
-	selectMedia(current_pos);
-	console.log("down ", current_pos);
-}
-
 function selectMedia(id) {
 	var div = $('[pos-cell="' + id + '"]').find(".mdl-card__actions");
 
-	$(".page-content").scrollTop($('.cell-selected').offsetTop + 400);
-	// div.parent().scrollTop(div.parent().offsetTop);
-
-	console.log($(div.parent().parent()));
-	console.log($(div));
 	$(div).removeClass("mdl-card__actions").addClass("cell-selected");
+	visible(div);
+}
+
+function visible(div){
+	if (!$(div).parent().parent().visible()){
+		$("main").scrollTo($(div).parent().parent(), 0);
+	}
 }
 
 function unselectMedia(id) {

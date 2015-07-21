@@ -70,3 +70,32 @@ body {
 .page-content,.mdl-layout__header-row {
 	padding-left: 5%;
 }
+
+.menu-selected{
+	background-color: rgb(224, 224, 224);
+	color:black;
+	display: block; 
+   -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+   flex-shrink: 0; 
+  padding: 16px 40px; 
+   margin: 0; 
+  color: #757575; 
+  font-size: 1.6em;text-decoration: none;  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;-webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; 
+}
+
+.menu-selected i {
+		padding-right: 32px;
+	
+}
