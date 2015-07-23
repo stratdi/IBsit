@@ -1,0 +1,65 @@
+#player {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 6;
+	width: 100%;
+	height: 100%;
+	background: black;
+}
+
+#player video {
+	width: 100%;
+	height: 100%;
+}
+
+.video-controls {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.6);
+	height: 116px;
+	font-size: 2em;
+	text-align: center;
+}
+
+.video-controls .material-icons {
+	cursor: pointer;
+	margin: 0px 0px 0px -1px;
+}
+
+progress {
+	color: #fff;
+	font-size: 12px;
+	width: 100%;
+	height: 22px;
+	border: none;
+	background: rgb(255, 150, 136);
+}
+
+progress[value]::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	background-image:  -webkit-linear-gradient(left, #f44, #f77);
+	border-radius: 0px;
+	-webkit-transition: width 0.1s; /* Safari */
+    transition: width 0.1s;
+}
+
+.video-controls .mdl-button--fab.mdl-button--colored {
+	background: rgb(255, 64, 129);
+	color: rgb(255, 255, 255);
+	margin: 12px 6% 0px 6%;
+}
+
+#player-loading {
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+}

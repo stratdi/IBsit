@@ -67,6 +67,8 @@ function homeGrid(medias) {
 					+ i
 					+ " id-media='"
 					+ medias[i].id
+					+ "' media-type='"
+					+ medias[i].type
 					+ "'>\n"
 					+ "<div class='mdl-card mdl-shadow--2dp demo-card-image' "
 					+ "style='background: url(http://recerca-ltim.uib.es/~atb/res/media/"
@@ -90,6 +92,11 @@ function homeGrid(medias) {
 	homeScroll();
 	homeGridController();
 
+	$(".mdl-cell").click(function() {
+		videoController();
+		var media = $(this).attr("id-media");
+		createMediaPlayer(media);
+	});
 }
 
 function homeScroll() {
@@ -126,8 +133,8 @@ function selectMedia(id) {
 	visible(div);
 }
 
-function visible(div){
-	if (!$(div).parent().parent().visible()){
+function visible(div) {
+	if (!$(div).parent().parent().visible()) {
 		$("main").scrollTo($(div).parent().parent(), 0);
 	}
 }
