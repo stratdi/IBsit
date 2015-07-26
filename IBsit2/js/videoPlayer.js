@@ -15,7 +15,11 @@ function createMediaPlayer(id) {
 	var type = $(media).attr("media-type");
 	switch (type) {
 	case MediaTypes.VIDEO:
-		player += videoPlayer(id);
+		player += videoPlayer(id) + "</div>";	
+		$("body").append(player);
+
+		playerActions();
+		progressBarEvents();
 		break;
 	case MediaTypes.VIDEO_PANO:
 	case MediaTypes.VIDEO_SPHERE:
@@ -26,16 +30,9 @@ function createMediaPlayer(id) {
 	default:
 		break;
 	}
-
-	player += "</div>";
-
-	$("body").append(player);
-
-	playerActions();
-	progressBarEvents();
-	console.log(player);
 }
 
+// VIDEO PLAYER
 function videoPlayer(id) {
 	var video = "<video id='video' src='http://recerca-ltim.uib.es/~atb/res/media/"
 			+ id + "/media.mp4' autoplay></video>";
@@ -114,6 +111,15 @@ function playerActions() {
 	$("#forward").click(function() {
 		forward();
 	});
+	
+	$(".video-controls").hide();
+	var i = null;
+	$("body").mousemove(function() {
+	    clearTimeout(i);
+	    $(".video-controls").fadeIn("fast");
+	    i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
+	});
+	
 }
 
 function rewind() {
@@ -131,3 +137,5 @@ function forward() {
 	$("#play").hide();
 	$("#pause").show();
 }
+
+// PANORAMA SPHERE PLAYER

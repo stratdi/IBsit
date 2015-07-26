@@ -124,6 +124,14 @@ function homeScroll() {
 	});
 
 	$(".scroll").css("padding-left", padding / 2);
+	
+	$(".scroll").hide();
+	var i = null;
+	$(".demo-grid-1").mousemove(function() {
+	    clearTimeout(i);
+	    $(".scroll").fadeIn("fast");
+	    i = setTimeout('$(".scroll").fadeOut("fast");', 2000);
+	});
 }
 
 function selectMedia(id) {
