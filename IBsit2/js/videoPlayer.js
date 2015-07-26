@@ -15,11 +15,16 @@ function createMediaPlayer(id) {
 	var type = $(media).attr("media-type");
 	switch (type) {
 	case MediaTypes.VIDEO:
-		player += videoPlayer(id) + "</div>";	
+		player += videoPlayer(id) + "</div>";
 		$("body").append(player);
 
 		playerActions();
 		progressBarEvents();
+
+		getMedia(id, function(response) {
+			mediaInfo(response);
+		});
+
 		break;
 	case MediaTypes.VIDEO_PANO:
 	case MediaTypes.VIDEO_SPHERE:
@@ -49,9 +54,38 @@ function videoPlayer(id) {
 			+ "<button id='forward' class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'>"
 			+ "<i class='material-icons'>&#xE01F;</i></button></div>";
 
+	var info = "<div id='info-media'></div>";
+
 	video += controls;
+	video += info;
 
 	return video;
+}
+
+function initialize2() {
+	console.log("holisss");
+	var mapOptions = {
+		zoom : 8,
+		center : new google.maps.LatLng(-34.397, 150.644)
+	};
+	var map = new google.maps.Map($("#info-media"),
+			mapOptions);
+}
+
+function mediaInfo(response) {
+	
+	var map;
+	function initialize() {
+	  map = new google.maps.Map(document.getElementById('info-media'), {
+	    zoom: 8,
+	    center: {lat: -34.397, lng: 150.644}
+	  });
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+	console.log("jeje");
+
+	//google.maps.event.addDomListener(window, 'load', initialize2);
 }
 
 function progressBarEvents() {
@@ -111,15 +145,15 @@ function playerActions() {
 	$("#forward").click(function() {
 		forward();
 	});
-	
+
 	$(".video-controls").hide();
 	var i = null;
 	$("body").mousemove(function() {
-	    clearTimeout(i);
-	    $(".video-controls").fadeIn("fast");
-	    i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
+		clearTimeout(i);
+		$(".video-controls").fadeIn("fast");
+		i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
 	});
-	
+
 }
 
 function rewind() {
