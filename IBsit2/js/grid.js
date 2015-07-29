@@ -72,13 +72,13 @@ function homeScroll() {
 	});
 
 	$(".scroll").css("padding-left", padding / 2);
-	
+
 	$(".scroll").hide();
 	var i = null;
 	$(".demo-grid-1").mousemove(function() {
-	    clearTimeout(i);
-	    $(".scroll").fadeIn("fast");
-	    i = setTimeout('$(".scroll").fadeOut("fast");', 2000);
+		clearTimeout(i);
+		$(".scroll").fadeIn("fast");
+		i = setTimeout('$(".scroll").fadeOut("fast");', 2000);
 	});
 }
 
@@ -98,4 +98,9 @@ function visible(div) {
 function unselectMedia(id) {
 	var div = $(".cell-selected");
 	$(div).removeClass("cell-selected").addClass("mdl-card__actions");
+}
+
+function loadHome(response) {
+	total_medias = response.data.medias.length;
+	homeGrid(response.data.medias);
 }

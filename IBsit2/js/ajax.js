@@ -1,7 +1,7 @@
 /**
  * Función que devuelve todo el contenido media de la base de datos de ATB
  */
-function getAllMedia() {
+function getAllMedia(callback) {
 	$.ajax({
 		url : 'http://recerca-ltim.uib.es/~atb/ajax/getAllTagsMedia.php',
 		async : false,
@@ -14,10 +14,7 @@ function getAllMedia() {
 			// response.data.tags devuelve categorias
 			// response.data.medias devuelve todos los media
 
-			// console.log(response.data.tags);
-			console.log('Success!');
-			total_medias = response.data.medias.length;
-			homeGrid(response.data.medias);
+			callback(response);
 		},
 		error : function(error) {
 			console.log('Uh Oh!' + JSON.stringify(error, null, 2));
@@ -73,4 +70,45 @@ function getMedia(id, callback) {
 			console.log('Uh Oh!' + JSON.stringify(error, null, 2));
 		}
 	});
+}
+
+function getGpx(id, map) {
+
+	$.ajax({
+		crossDomain : true,
+		dataType : "xml",
+		url : "http://recerca-ltim.uib.es/~atb/ajax/getGPX.php",
+		data : {
+			id : id
+		},
+		success : function(xml) {
+			console.log("hola", $(xml));
+			if (xml) {
+
+				var points = [];
+				var bounds = new google.maps.LatLngBounds();
+				$(xml).find("trkpt").each(function() {
+					var lat = $(this).attr("lat");
+					var lon = $(this).attr("lon");
+					var p = new google.maps.LatLng(lat, lon);
+					points.push(p);
+					bounds.extend(p);
+				});
+
+				var poly = new google.maps.Polyline({
+					path : points,
+					strokeColor : "#FF00AA",
+					strokeOpacity : .7,
+					strokeWeight : 4
+				});
+				poly.setMap(map);
+			} else {
+				$("#map-tracking").remove();
+			}
+		},
+		error : function(error) {
+			console.log('Uh Oh!' + JSON.stringify(error, null, 2));
+		}
+	});
+
 }

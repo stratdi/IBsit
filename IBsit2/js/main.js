@@ -30,7 +30,7 @@ var init = function() {
 		}
 	});
 
-	getAllMedia();
+	getAllMedia(loadHome);
 };
 
 // window.onload can work without <body onload="">

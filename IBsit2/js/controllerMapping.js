@@ -137,6 +137,8 @@ function menuController() {
 			break;
 		case 13: // OK button
 			// selecciona opcion
+			$(".mdl-layout__drawer").removeClass("is-visible");
+			setContentFromMenu();
 			break;
 		case 10009: // RETURN button
 			// menu
@@ -151,6 +153,35 @@ function menuController() {
 			break;
 		}
 	});
+}
+
+function setContentFromMenu() {
+	var optionSelected = Number($(".menu-selected").attr("menu-option"));
+	switch (optionSelected) {
+	case 0:
+		break;
+	case 1:
+		existsPageContent();
+		getAllMedia(loadHome);
+		break;
+	case 2:
+		break;
+	case 3:
+		existsPageContent();
+		loadMap();
+		break;
+	default:
+		console.log("jajaja");
+		break;
+	}
+}
+
+function existsPageContent() {
+	console.log("papaapa");
+	if (!$(".page-content").length) {
+		$(".mdl-layout__content").empty().append(
+				"<div class='page-content'></div>");
+	}
 }
 
 function menuMoveUp() {
@@ -215,6 +246,9 @@ function videoController() {
 			break;
 		case 13: // OK button
 			// selecciona opcion
+			break;
+		case 457: // INFO button
+			$("#info-media").toggle();
 			break;
 		case 10009: // RETURN button
 			// menu

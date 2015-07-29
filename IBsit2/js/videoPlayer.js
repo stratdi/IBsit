@@ -1,3 +1,5 @@
+var id_current_media;
+
 var MediaTypes = {
 	VIDEO : "VIDEO",
 	VIDEO_PANO : "VIDEO_PANO",
@@ -7,6 +9,7 @@ var MediaTypes = {
 }
 
 function createMediaPlayer(id) {
+	id_current_media = id;
 	var player = "<div id='player'>";
 	player += "<div id='player-loading'class='mdl-spinner mdl-js-spinner is-active'></div>";
 
@@ -54,7 +57,7 @@ function videoPlayer(id) {
 			+ "<button id='forward' class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'>"
 			+ "<i class='material-icons'>&#xE01F;</i></button></div>";
 
-	var info = "<div id='info-media'></div>";
+	var info = "<div id='info-media'><div id='map-position'></div><div id='map-tracking'></div></div>";
 
 	video += controls;
 	video += info;
@@ -62,30 +65,50 @@ function videoPlayer(id) {
 	return video;
 }
 
-function initialize2() {
-	console.log("holisss");
-	var mapOptions = {
-		zoom : 8,
-		center : new google.maps.LatLng(-34.397, 150.644)
+function trackingLoad(response) {
+
+	var myLatlng = new google.maps.LatLng(response.latitude, response.longitude);
+
+	var optionsMap = {
+		zoom : 9,
+		center : myLatlng,
+		disableDefaultUI : true,
+		draggable : false,
+		scrollwheel : false,
 	};
-	var map = new google.maps.Map($("#info-media"),
-			mapOptions);
+
+	var map = new google.maps.Map($("#map-tracking").get(0), optionsMap);
+
+	getGpx(id_current_media, map);
+}
+
+function mapLoad(response) {
+
+	var myLatlng = new google.maps.LatLng(response.latitude, response.longitude);
+
+	var optionsMap = {
+		zoom : 10,
+		center : myLatlng,
+		disableDefaultUI : true,
+		draggable : false,
+		scrollwheel : false,
+	};
+
+	var map = new google.maps.Map($("#map-position").get(0), optionsMap);
+
+	var marker = new google.maps.Marker({
+		position : myLatlng,
+		map : map,
+		animation : google.maps.Animation.DROP,
+		title : "Hola Mundo"
+	});
+
+	trackingLoad(response);
 }
 
 function mediaInfo(response) {
-	
-	var map;
-	function initialize() {
-	  map = new google.maps.Map(document.getElementById('info-media'), {
-	    zoom: 8,
-	    center: {lat: -34.397, lng: 150.644}
-	  });
-	}
 
-	google.maps.event.addDomListener(window, 'load', initialize);
-	console.log("jeje");
-
-	//google.maps.event.addDomListener(window, 'load', initialize2);
+	mapLoad(response);
 }
 
 function progressBarEvents() {
@@ -147,12 +170,15 @@ function playerActions() {
 	});
 
 	$(".video-controls").hide();
+
 	var i = null;
 	$("body").mousemove(function() {
 		clearTimeout(i);
 		$(".video-controls").fadeIn("fast");
 		i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
 	});
+
+	$("#info-media").hide();
 
 }
 
