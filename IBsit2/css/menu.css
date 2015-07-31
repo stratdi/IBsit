@@ -74,6 +74,10 @@ body {
 	padding-left: 5%;
 }
 
+.mdl-layout__header{
+	min-height: 0px;	
+}
+
 .menu-selected {
 	background-color: rgb(224, 224, 224);
 	color: black;

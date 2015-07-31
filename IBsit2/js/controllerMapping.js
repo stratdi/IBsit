@@ -162,12 +162,15 @@ function setContentFromMenu() {
 		break;
 	case 1:
 		existsPageContent();
+		$(".mdl-layout__header-row").show();
+		$(".mdl-layout__header").css("height", "");
 		getAllMedia(loadHome);
 		break;
 	case 2:
 		break;
 	case 3:
 		existsPageContent();
+		$(".mdl-layout__header-row").hide();
 		loadMap();
 		break;
 	default:
