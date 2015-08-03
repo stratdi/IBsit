@@ -44,9 +44,14 @@ function mapMenuLoader(medias) {
 					"<div class='menu-header'>" + currentIsland + "</div>");
 		}
 		$("#map-menu").append(
-				"<div class='menu-map-option'>" + medias[i].name + "</div>");
+				"<div class='menu-map-option' map-pos=" + i + " id-media="
+						+ medias[i].id + " media-type=" + medias[i].type + ">"
+						+ medias[i].name + "</div>");
 	}
 
+	total_medias = medias.length;
+	// homeScroll();
+	mapController();
 	console.log('medias', medias);
 	var mapMenu = "";
 }
@@ -106,12 +111,12 @@ function allMarkers(response) {
 			position : myLatlng,
 			map : map,
 			animation : google.maps.Animation.DROP,
-			title : "Hola Mundo"
+			title : medias[i].name,
+			id : media.id
 		});
-
 		markers[i] = marker;
 		google.maps.event.addListener(marker, 'click', function(event) {
-			alert("holaaa!");
+			createMediaPlayer(this.id);
 		});
 
 		infoMarkers[i] = setInfoMarker(marker, map, media);
@@ -142,5 +147,30 @@ function setInfoMarker(marker, map, media) {
 function closeAllMarkers() {
 	for (var i = 0; i < infoMarkers.length; i++) {
 		infoMarkers[i].close();
+	}
+}
+
+function selectMapMedia(id) {
+	var div = $('[map-pos="' + id + '"]');
+
+	$(div).removeClass("menu-map-option").addClass("map-menu-selected");
+	closeAllMarkers();
+	infoMarkers[id].open(map, markers[id]);
+	mapOptionVisible(div);
+}
+
+function unselectMapMedia(id) {
+	var div = $(".map-menu-selected");
+	$(div).removeClass("map-menu-selected").addClass("menu-map-option");
+}
+
+function mapOptionVisible(div) {
+
+	if (!$(div).visible()) {
+		if (map_current_pos == 0) {
+			$("#map-menu").scrollTo($(".menu-header").get(0), 0);
+		} else {
+			$("#map-menu").scrollTo($(div), 0);
+		}
 	}
 }

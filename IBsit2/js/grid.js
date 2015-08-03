@@ -1,5 +1,3 @@
-var total_medias;
-
 function homeGrid(medias) {
 
 	var grid = "<div class='demo-grid-1 mdl-grid'>";

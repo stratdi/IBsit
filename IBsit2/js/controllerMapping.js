@@ -11,11 +11,19 @@ var current_page = Pages.HOME;
 // #########################################################
 var home_current_pos = 0;
 var menu_current_pos = 1;
+var map_current_pos = 0;
+
+var total_medias;
 
 /**
  * Maps the home (grid with all medias) section.
  */
 function homeGridController() {
+
+	current_page = Pages.HOME;
+	unselectMenuOption(menu_current_pos);
+	menu_current_pos = 1;
+	selectMenuOption(menu_current_pos);
 
 	// FIXME change to other place
 	$(".mdl-layout__drawer-button").click(function() {
@@ -33,33 +41,33 @@ function homeGridController() {
 
 		switch (e.keyCode) {
 
-		case 37:
+		case KEY_LEFT:
 			homeMoveLeft();
 			break;
-		case 38:
+		case KEY_UP:
 			homeMoveUp();
 			e.preventDefault();
 			break;
-		case 39:
+		case KEY_RIGHT:
 			homeMoveRight();
 			break;
-		case 40:
+		case KEY_DOWN:
 			homeMoveDown();
 			e.preventDefault();
 			break;
-		case 13: // OK button
+		case KEY_OK: // OK button
 			// reproduceVideo
 			videoController();
 			var media = $('[pos-cell="' + home_current_pos + '"]');
 			createMediaPlayer($(media).attr("id-media"));
 
 			break;
-		case 10009: // RETURN button
+		case KEY_RETURN: // RETURN button
 			// menu
 			$(".mdl-layout__drawer").addClass("is-visible");
 			menuController();
 			break;
-		case 10182: // EXIT
+		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
 			break;
 		default:
@@ -117,9 +125,6 @@ function homeMoveDown() {
 // #########################################################
 
 function menuController() {
-	unselectMenuOption(menu_current_pos);
-	menu_current_pos = 1;
-	selectMenuOption(menu_current_pos);
 
 	$(document).unbind('keydown');
 	$(document).bind('keydown', function(e) {
@@ -127,25 +132,25 @@ function menuController() {
 
 		switch (e.keyCode) {
 
-		case 38:
+		case KEY_UP:
 			menuMoveUp();
 			e.preventDefault();
 			break;
-		case 40:
+		case KEY_DOWN:
 			menuMoveDown();
 			e.preventDefault();
 			break;
-		case 13: // OK button
+		case KEY_OK: // OK button
 			// selecciona opcion
 			$(".mdl-layout__drawer").removeClass("is-visible");
 			setContentFromMenu();
 			break;
-		case 10009: // RETURN button
+		case KEY_RETURN: // RETURN button
 			// menu
 			$(".mdl-layout__drawer").removeClass("is-visible");
 			bindControllerFromMenu();
 			break;
-		case 10182: // EXIT
+		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
 			break;
 		default:
@@ -223,6 +228,10 @@ function bindControllerFromMenu() {
 	case Pages.HOME:
 		homeGridController();
 		break;
+
+	case Pages.MAP:
+		mapController();
+		break;
 	}
 }
 
@@ -237,28 +246,32 @@ function videoController() {
 
 		switch (e.keyCode) {
 
-		case 412:
-		case 37: // LEFT - REWIND
+		case KEY_REWIND:
+		case KEY_LEFT: // LEFT - REWIND
 			rewind();
 			e.preventDefault();
 			break;
-		case 417:
-		case 39: // RIGHT - FORWARD
+		case KEY_FORWARD:
+		case KEY_RIGHT: // RIGHT - FORWARD
 			forward();
 			e.preventDefault();
 			break;
-		case 13: // OK button
+		case KEY_OK: // OK button
 			// selecciona opcion
 			break;
 		case 457: // INFO button
-			$("#info-media").toggle();
+			if ($("#info-media").css("opacity") == 0) {
+				$("#info-media").css("opacity", 1);
+			} else {
+				$("#info-media").css("opacity", 0);
+			}
 			break;
-		case 10009: // RETURN button
+		case KEY_RETURN: // RETURN button
 			// menu
 			bindControllerFromMenu();
 			$("#player").remove();
 			break;
-		case 10182: // EXIT
+		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
 			break;
 		default:
@@ -266,4 +279,73 @@ function videoController() {
 			break;
 		}
 	});
+}
+
+// #########################################################
+// # GOOGLE MAP CONTROLLER MAP
+// #########################################################
+
+function mapController() {
+	current_page = Pages.MAP;
+	
+	unselectMenuOption(menu_current_pos);
+	menu_current_pos = 3;
+	selectMenuOption(menu_current_pos);
+
+	$(document).unbind('keydown');
+	$(document).bind('keydown', function(e) {
+		console.log("Key code : " + e.keyCode);
+
+		switch (e.keyCode) {
+
+		case KEY_UP:
+			mapMoveUp();
+			e.preventDefault();
+			break;
+		case KEY_DOWN:
+			mapMoveDown();
+			e.preventDefault();
+			break;
+		case KEY_OK: // OK button
+			// selecciona opcion
+			videoController();
+			var media = $('[map-pos="' + map_current_pos + '"]');
+			createMediaPlayer($(media).attr("id-media"));
+			break;
+		case KEY_RETURN: // RETURN button
+			// menu
+			$(".mdl-layout__drawer").addClass("is-visible");
+			menuController();
+			break;
+		case KEY_EXIT: // EXIT
+			tizen.application.getCurrentApplication().exit();
+			break;
+		default:
+			console.log("Key code : " + e.keyCode);
+			break;
+		}
+	});
+}
+
+function mapMoveUp() {
+	unselectMapMedia(map_current_pos);
+
+	if (map_current_pos - 1 >= 0) {
+		map_current_pos -= 1;
+	}
+
+	selectMapMedia(map_current_pos);
+	console.log("map ", map_current_pos);
+}
+
+function mapMoveDown() {
+	unselectMapMedia(map_current_pos);
+
+	if (map_current_pos + 1 < total_medias) {
+		map_current_pos += 1;
+	}
+
+	selectMapMedia(map_current_pos);
+	console.log("map ", map_current_pos);
+
 }

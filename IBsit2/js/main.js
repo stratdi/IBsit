@@ -3,33 +3,17 @@ var init = function() {
 	// TODO:: Do your initialization job
 	console.log("init() called");
 
-	// add eventListener for keydown
-	$(document).bind('keydown', function(e) {
-		console.log("Key code : " + e.keyCode);
+	if (typeof tizen != 'undefined') {
+		tizen.tvinputdevice.registerKey('MediaPlayPause');
+		tizen.tvinputdevice.registerKey('MediaRewind');
+		tizen.tvinputdevice.registerKey('MediaFastForward');
+		tizen.tvinputdevice.registerKey('MediaPlay');
+		tizen.tvinputdevice.registerKey('MediaPause');
+		tizen.tvinputdevice.registerKey('MediaStop');
 
-		switch (e.keyCode) {
-		case 37: // LEFT arrow
-			alert("hola");
-			break;
-		case 38: // UP arrow
-			break;
-		case 39: // RIGHT arrow
-			break;
-		case 40: // DOWN arrow
-			break;
-		case 13: // OK button
-			break;
-		case 10009: // RETURN button
-			break;
-		case 10182:
-			tizen.application.getCurrentApplication().exit();
-			break;
-		default:
-			console.log("Key code : " + e.keyCode);
-			break;
-		}
-	});
-
+		tizen.tvinputdevice.registerKey('Menu');
+		tizen.tvinputdevice.registerKey('Info');
+	}
 	getAllMedia(loadHome);
 };
 

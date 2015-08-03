@@ -1,47 +1,61 @@
-.mdl-layout__content{
-	width:100%;
-	height:100%;
-}
-
-#big-map {
-	display:inline-block;
+.mdl-layout__content {
 	width: 100%;
 	height: 100%;
 }
 
-.gm-style-iw{
-    max-height: 250px;
+#big-map {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.gm-style-iw {
+	max-height: 250px;
 }
 
 #firstHeading {
-    margin: 0;
-    padding-top: 10px;
+	margin: 0;
+	padding-top: 10px;
 }
 
 #map-menu {
-    height: 100%;
-    width: 30%;
-    padding-left: 5%;
-    background: rgb(96, 125, 139);
-    position: absolute;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-    z-index: 2;
-    overflow-y: scroll;
+	height: 100%;
+	width: 30%;
+	padding-left: 5%;
+	background: rgb(96, 125, 139);
+	position: absolute;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px
+		rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+	z-index: 2;
+	overflow-y: scroll;
 }
 
 .menu-header {
-    margin: 10px;
-    font-size: 2em;
-    color: white;
+	padding: 20px;
+	padding-top: 40px;
+	font-size: 3em;
+	color: white;
+	background-color: #37474F;
 }
 
 .menu-map-option {
-    background: grey;
-    padding: 10px;
-    cursor:pointer;
+	background: #607D8B;
+	padding: 20px;
+	font-size: 2em;
+	cursor: pointer;
+	color: white;
+	border-top: 1px solid #546E7A;
 }
 
-.menu-map-option:hover {
-    background: white;
-    padding: 10px;
+.map-menu-selected {
+	padding: 20px;
+	font-size: 2em;
+	cursor: pointer;
+	border-top: 1px solid #546E7A;
+}
+
+.menu-map-option:hover,.map-menu-selected {
+	background: #CFD8DC;
+	padding: 20px;
+	color: black;
 }

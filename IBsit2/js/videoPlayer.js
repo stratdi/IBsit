@@ -37,7 +37,7 @@ function createMediaPlayer(id) {
 		break;
 	default:
 		break;
-	}
+	}	
 }
 
 // VIDEO PLAYER
@@ -95,6 +95,7 @@ function mapLoad(response) {
 	};
 
 	var map = new google.maps.Map($("#map-position").get(0), optionsMap);
+	//google.maps.event.trigger(map, 'resize');
 
 	var marker = new google.maps.Marker({
 		position : myLatlng,
@@ -178,8 +179,7 @@ function playerActions() {
 		i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
 	});
 
-	$("#info-media").hide();
-
+	$("#info-media").css("opacity","0");
 }
 
 function rewind() {
