@@ -13,8 +13,6 @@ var home_current_pos = 0;
 var menu_current_pos = 1;
 var map_current_pos = 0;
 
-var total_medias;
-
 /**
  * Maps the home (grid with all medias) section.
  */
@@ -70,6 +68,10 @@ function homeGridController() {
 		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
 			break;
+		case 65376:
+			console.log("jejeje...");
+			alert("HOLAAA!");
+			break;
 		default:
 			console.log("Key code : " + e.keyCode);
 			break;
@@ -121,6 +123,22 @@ function homeMoveDown() {
 }
 
 // #########################################################
+// # SEARCH CONTROLLER MAP
+// #########################################################
+function searchController() {
+	$(document).unbind('keydown');
+	$(document).bind('keydown', function(e) {
+		switch (e.keyCode) {
+		case KEY_OK:
+		case KEY_KEYBOARD_OK:
+			$("#search-input").blur();
+			search();
+			break;
+		}
+	});
+}
+
+// #########################################################
 // # MENU CONTROLLER MAP
 // #########################################################
 
@@ -164,11 +182,23 @@ function setContentFromMenu() {
 	var optionSelected = Number($(".menu-selected").attr("menu-option"));
 	switch (optionSelected) {
 	case 0:
+		if (current_page == Pages.MAP) {
+			existsPageContent();
+			$(".mdl-layout__header-row").show();
+			$(".mdl-layout__header").css("height", "");
+			$("#search-input").val("");
+			$(".textfield-search").removeClass("is-dirty");
+			getAllMedia(loadHome);
+		}
+		$("#search-input").focus();
+
 		break;
 	case 1:
 		existsPageContent();
 		$(".mdl-layout__header-row").show();
 		$(".mdl-layout__header").css("height", "");
+		$("#search-input").val("");
+		$(".textfield-search").removeClass("is-dirty");
 		getAllMedia(loadHome);
 		break;
 	case 2:
@@ -287,7 +317,7 @@ function videoController() {
 
 function mapController() {
 	current_page = Pages.MAP;
-	
+
 	unselectMenuOption(menu_current_pos);
 	menu_current_pos = 3;
 	selectMenuOption(menu_current_pos);

@@ -48,9 +48,7 @@ function mapMenuLoader(medias) {
 						+ medias[i].id + " media-type=" + medias[i].type + ">"
 						+ medias[i].name + "</div>");
 	}
-
-	total_medias = medias.length;
-	// homeScroll();
+		
 	mapController();
 	console.log('medias', medias);
 	var mapMenu = "";

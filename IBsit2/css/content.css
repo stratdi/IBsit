@@ -26,26 +26,35 @@
 }
 
 .demo-card-image>.mdl-card__actions {
-	height: 68px;
+	height: 90px;
+}
+
+.demo-card-image__small {
+	font-size: 2em;
+}
+
+.demo-card-image__filename {
+	font-size: 1.5em;
 }
 
 .cell-selected {
 	background-color: rgba(255, 255, 255, 0.5);
-	line-height: 18px;
+	line-height: normal;
 	overflow: hidden;
-	padding: 16px;
-	color:black;
+	padding: 16px 16px 9px 16px;
+	color: black;
 }
-.mdl-card__actions *{
-	color:white;
+
+.mdl-card__actions * {
+	color: white;
 }
 
 .cell-selected * {
-	color:black;
+	color: black;
 }
 
-.meta-info-black{
-	color:black;
+.meta-info-black {
+	color: black;
 }
 
 .mdl-cell.mdl-cell--3-col .mdl-card__actions {
@@ -82,7 +91,7 @@
 }
 
 #up {
-	top: 80px;
+	top: 120px;
 }
 
 #down {
@@ -95,5 +104,5 @@
 
 .minilogo i.material-icons {
 	float: right;
-	font-size:2.4em;
+	font-size: 4em;
 }

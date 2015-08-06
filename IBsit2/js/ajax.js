@@ -13,7 +13,8 @@ function getAllMedia(callback) {
 		success : function(response) {
 			// response.data.tags devuelve categorias
 			// response.data.medias devuelve todos los media
-
+			medias = response.data.medias;
+			total_medias = medias.length;
 			callback(response);
 		},
 		error : function(error) {

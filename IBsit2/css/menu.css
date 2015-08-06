@@ -9,7 +9,7 @@
 
 .mdl-layout__header .mdl-layout__drawer-button .material-icons {
 	position: relative;
-	top: 45%;
+	top: 500px;
 }
 
 .mdl-layout__header .mdl-layout__drawer-button:hover {
@@ -27,11 +27,11 @@ body {
 	background-color: rgb(0, 150, 136);
 	border-right: 1px solid rgb(0, 121, 107);
 	color: white;
-	width: 280px;
-	-webkit-transform: translateX(-280px);
-	-ms-transform: translateX(-280px);
-	transform: translateX(-280px);
-	-webkit-transform: translateX(-280px);
+	width: 380px;
+	-webkit-transform: translateX(-380px);
+	-ms-transform: translateX(-380px);
+	transform: translateX(-380px);
+	-webkit-transform: translateX(-380px);
 }
 
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
@@ -58,12 +58,16 @@ body {
 	padding-right: 32px;
 }
 
+.mdl-textfield__label .material-icons {
+	font-size: 1em;
+}
+
 .mdl-layout-title {
-	font-size: 4em;
+	font-size: 6em;
 }
 
 .mdl-navigation__link {
-	font-size: 1.6em;
+	font-size: 2.4em;
 }
 
 .mdl-layout__drawer>.mdl-layout-title {
@@ -72,10 +76,20 @@ body {
 
 .page-content,.mdl-layout__header-row {
 	padding-left: 5%;
+	height: 100px;
 }
 
-.mdl-layout__header{
-	min-height: 0px;	
+.mdl-layout__header-row {
+	background-color: white;
+	height: 100px;
+}
+
+input#search-input,label.mdl-textfield__label {
+	font-size: 3em;
+}
+
+.mdl-layout__header {
+	min-height: 0px;
 }
 
 .menu-selected {
@@ -88,7 +102,7 @@ body {
 	padding: 16px 40px;
 	margin: 0;
 	color: #757575;
-	font-size: 1.6em;
+	font-size: 2.4em;
 	text-decoration: none;
 	display: -webkit-box !important;
 	display: -webkit-flex !important;
@@ -107,4 +121,15 @@ body {
 
 .menu-selected i {
 	padding-right: 32px;
+}
+
+/* Barra de búsqueda */
+.mdl-textfield.mdl-js-textfield.textfield-search.is-upgraded {
+	margin-left: 20px;
+	width: 100%;
+	color: black;
+}
+
+#search-input {
+	border: none;
 }

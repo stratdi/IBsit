@@ -22,7 +22,7 @@ function homeGrid(medias) {
 					+ "/icon.jpg) center/cover;'>\n"
 					+ "<div class='mdl-card__title mdl-card--expand'></div>\n"
 					+ "<div class='mdl-card__actions meta'>\n"
-					+ "<div class='minilogo'><i class='material-icons'>&#xE532;</i></div>"
+					+ "<div class='minilogo'><i class='material-icons'>"+getMediaIcon(medias[i].type)+"</i></div>"
 					+ "<div class='demo-card-image__small'><strong>"
 					+ medias[i].location + "</strong></div>"
 					+ "<div class='demo-card-image__filename'>"
@@ -38,11 +38,35 @@ function homeGrid(medias) {
 	homeScroll();
 	homeGridController();
 
+	selectMedia(0);
+	
 	$(".mdl-cell").click(function() {
 		videoController();
 		var media = $(this).attr("id-media");
 		createMediaPlayer(media);
 	});
+}
+
+function getMediaIcon(media){
+	var icon;
+	switch (media) {
+	case MediaTypes.VIDEO:
+		icon = "&#xE04B;";
+		break;
+	case MediaTypes.VIDEO_PANO:
+	case MediaTypes.VIDEO_SPHERE:
+		// Not supported in TV
+		break;
+	case MediaTypes.PANORAMA:
+		icon = "&#xE432;";
+		break;
+	case MediaTypes.PANORAMA_SPHERE:
+		icon = "&#xE433;";
+		break;
+	default:
+		break;
+	}	
+	return icon;
 }
 
 function homeScroll() {
@@ -99,6 +123,5 @@ function unselectMedia(id) {
 }
 
 function loadHome(response) {
-	total_medias = response.data.medias.length;
 	homeGrid(response.data.medias);
 }

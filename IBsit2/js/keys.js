@@ -5,6 +5,7 @@ var KEY_RIGHT = 39;
 var KEY_UP=38;
 var KEY_DOWN = 40;
 var KEY_OK = 13;
+var KEY_KEYBOARD_OK = 65376;
 var KEY_RETURN = 10009;
 var KEY_EXIT = 10182;
 
