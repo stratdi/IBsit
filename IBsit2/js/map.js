@@ -48,9 +48,13 @@ function mapMenuLoader(medias) {
 						+ medias[i].id + " media-type=" + medias[i].type + ">"
 						+ medias[i].name + "</div>");
 	}
+	
+	$(".menu-map-option").click(function(){
+		unselectMapMedia($(".map-menu-selected").attr("map-pos"));
+		selectMapMedia($(this).attr("map-pos"));
+	});
 		
 	mapController();
-	console.log('medias', medias);
 	var mapMenu = "";
 }
 

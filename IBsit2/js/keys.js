@@ -15,3 +15,6 @@ var KEY_PLAY = 145;
 var KEY_PAUSE = 19;
 var KEY_PLAYPAUSE = 10252;
 var KEY_STOP = 413;
+
+var KEY_RED = 403;
+var KEY_BLUE = 406;

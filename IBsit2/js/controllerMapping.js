@@ -9,34 +9,34 @@ var current_page = Pages.HOME;
 // #########################################################
 // # HOME CONTROLLER MAP
 // #########################################################
-var home_current_pos = 0;
+var grid_current_pos = 0;
 var menu_current_pos = 1;
-var map_current_pos = 0;
+var map_current_pos = -1;
 
 /**
  * Maps the home (grid with all medias) section.
  */
 function homeGridController() {
-
 	current_page = Pages.HOME;
 	unselectMenuOption(menu_current_pos);
 	menu_current_pos = 1;
 	selectMenuOption(menu_current_pos);
+	gridController();
+}
 
-	// FIXME change to other place
-	$(".mdl-layout__drawer-button").click(function() {
-		menuController();
-	});
+function categoriesGridController() {
+	current_page = Pages.CATEGORIES;
+	unselectMenuOption(menu_current_pos);
+	menu_current_pos = 2;
+	selectMenuOption(menu_current_pos);
+	gridController();
+}
 
-	// FIXME change to other place
-	$(".mdl-layout__obfuscator").click(function() {
-		bindControllerFromMenu();
-	});
+function gridController() {
+	grid_current_pos = 0;
 
 	$(document).unbind('keydown');
 	$(document).bind('keydown', function(e) {
-		console.log("Key code : " + e.keyCode);
-
 		switch (e.keyCode) {
 
 		case KEY_LEFT:
@@ -54,72 +54,75 @@ function homeGridController() {
 			e.preventDefault();
 			break;
 		case KEY_OK: // OK button
-			// reproduceVideo
 			videoController();
-			var media = $('[pos-cell="' + home_current_pos + '"]');
+			var media = $('[pos-cell="' + grid_current_pos + '"]');
 			createMediaPlayer($(media).attr("id-media"));
 
 			break;
+		case KEY_MENU:
 		case KEY_RETURN: // RETURN button
 			// menu
 			$(".mdl-layout__drawer").addClass("is-visible");
 			menuController();
 			break;
+		case KEY_RED:
+			if (current_page == Pages.CATEGORIES) {
+				selectLeftTab();
+			}
+			break;
+		case KEY_BLUE:
+			if (current_page == Pages.CATEGORIES) {
+				selectRightTab();
+			}
+			break;
 		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
-			break;
-		case 65376:
-			console.log("jejeje...");
-			alert("HOLAAA!");
-			break;
-		default:
-			console.log("Key code : " + e.keyCode);
 			break;
 		}
 	});
 }
 
 function homeMoveLeft() {
-	unselectMedia(home_current_pos);
+	unselectMedia(grid_current_pos);
 
-	if (home_current_pos - 1 >= 0) {
-		home_current_pos -= 1;
+	if (grid_current_pos - 1 >= 0) {
+		grid_current_pos -= 1;
 	}
-	selectMedia(home_current_pos);
+	selectMedia(grid_current_pos);
 }
 
 function homeMoveRight() {
-	unselectMedia(home_current_pos);
+	unselectMedia(grid_current_pos);
 
-	if (home_current_pos + 1 < total_medias) {
-		home_current_pos += 1;
+	if (grid_current_pos + 1 < total_medias) {
+		grid_current_pos += 1;
 	}
 
-	selectMedia(home_current_pos);
+	selectMedia(grid_current_pos);
 }
 
 function homeMoveUp() {
-	unselectMedia(home_current_pos);
+	unselectMedia(grid_current_pos);
 
-	if (home_current_pos - 4 >= 0) {
-		home_current_pos -= 4;
+	if (grid_current_pos - 4 >= 0) {
+		grid_current_pos -= 4;
 	} else {
-		home_current_pos = 0;
+		grid_current_pos = 0;
 	}
 
-	selectMedia(home_current_pos);
+	selectMedia(grid_current_pos);
 }
 
 function homeMoveDown() {
-	unselectMedia(home_current_pos);
+	unselectMedia(grid_current_pos);
 
-	if (home_current_pos + 4 < total_medias) {
-		home_current_pos += 4;
+	if (grid_current_pos + 4 < total_medias) {
+		grid_current_pos += 4;
 	} else {
-		home_current_pos = total_medias - 1;
+		grid_current_pos = total_medias - 1;
 	}
 
-	selectMedia(home_current_pos);
+	selectMedia(grid_current_pos);
 }
 
 // #########################################################
@@ -146,7 +149,6 @@ function menuController() {
 
 	$(document).unbind('keydown');
 	$(document).bind('keydown', function(e) {
-		console.log("Key code : " + e.keyCode);
 
 		switch (e.keyCode) {
 
@@ -163,6 +165,7 @@ function menuController() {
 			$(".mdl-layout__drawer").removeClass("is-visible");
 			setContentFromMenu();
 			break;
+		case KEY_MENU:
 		case KEY_RETURN: // RETURN button
 			// menu
 			$(".mdl-layout__drawer").removeClass("is-visible");
@@ -171,51 +174,51 @@ function menuController() {
 		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
 			break;
-		default:
-			console.log("Key code : " + e.keyCode);
-			break;
 		}
 	});
 }
 
 function setContentFromMenu() {
-	var optionSelected = Number($(".menu-selected").attr("menu-option"));
-	switch (optionSelected) {
+	menu_current_pos = Number(menu_current_pos);
+	switch (menu_current_pos) {
 	case 0:
 		if (current_page == Pages.MAP) {
 			existsPageContent();
-			$(".mdl-layout__header-row").show();
-			$(".mdl-layout__header").css("height", "");
-			$("#search-input").val("");
-			$(".textfield-search").removeClass("is-dirty");
+			removeSearchText();
 			getAllMedia(loadHome);
 		}
 		$("#search-input").focus();
 
 		break;
 	case 1:
+		current_page = Pages.HOME;
 		existsPageContent();
-		$(".mdl-layout__header-row").show();
-		$(".mdl-layout__header").css("height", "");
-		$("#search-input").val("");
-		$(".textfield-search").removeClass("is-dirty");
+		removeSearchText();
 		getAllMedia(loadHome);
 		break;
 	case 2:
+		current_page = Pages.CATEGORIES;
+		existsPageContent();
+		removeSearchText();
+		loadCategories();
 		break;
 	case 3:
+		current_page = Pages.MAP;
 		existsPageContent();
 		$(".mdl-layout__header-row").hide();
 		loadMap();
 		break;
-	default:
-		console.log("jajaja");
-		break;
 	}
 }
 
+function removeSearchText() {
+	$(".mdl-layout__header-row").show();
+	$(".mdl-layout__header").css("height", "");
+	$("#search-input").val("");
+	$(".textfield-search").removeClass("is-dirty");
+}
+
 function existsPageContent() {
-	console.log("papaapa");
 	if (!$(".page-content").length) {
 		$(".mdl-layout__content").empty().append(
 				"<div class='page-content'></div>");
@@ -223,15 +226,11 @@ function existsPageContent() {
 }
 
 function menuMoveUp() {
-	console.log("parriba!");
-	console.log(menu_current_pos);
 	unselectMenuOption(menu_current_pos);
 	if (menu_current_pos - 1 >= 0) {
 		menu_current_pos--;
 	}
 	selectMenuOption(menu_current_pos);
-	console.log(menu_current_pos);
-
 }
 
 function menuMoveDown() {
@@ -243,7 +242,6 @@ function menuMoveDown() {
 }
 
 function selectMenuOption(id) {
-
 	var div = $('a[menu-option="' + id + '"]');
 	$(div).removeClass("mdl-navigation__link").addClass("menu-selected");
 }
@@ -258,7 +256,9 @@ function bindControllerFromMenu() {
 	case Pages.HOME:
 		homeGridController();
 		break;
-
+	case Pages.CATEGORIES:
+		categoriesGridController();
+		break;
 	case Pages.MAP:
 		mapController();
 		break;
@@ -272,8 +272,6 @@ function videoController() {
 
 	$(document).unbind('keydown');
 	$(document).bind('keydown', function(e) {
-		console.log("Key code : " + e.keyCode);
-
 		switch (e.keyCode) {
 
 		case KEY_REWIND:
@@ -287,15 +285,15 @@ function videoController() {
 			e.preventDefault();
 			break;
 		case KEY_OK: // OK button
-			// selecciona opcion
 			break;
-		case 457: // INFO button
+		case KEY_INFO: // INFO button
 			if ($("#info-media").css("opacity") == 0) {
 				$("#info-media").css("opacity", 1);
 			} else {
 				$("#info-media").css("opacity", 0);
 			}
 			break;
+		case KEY_STOP:
 		case KEY_RETURN: // RETURN button
 			// menu
 			bindControllerFromMenu();
@@ -303,9 +301,6 @@ function videoController() {
 			break;
 		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
-			break;
-		default:
-			console.log("VIDEO - Key code : " + e.keyCode);
 			break;
 		}
 	});
@@ -324,8 +319,6 @@ function mapController() {
 
 	$(document).unbind('keydown');
 	$(document).bind('keydown', function(e) {
-		console.log("Key code : " + e.keyCode);
-
 		switch (e.keyCode) {
 
 		case KEY_UP:
@@ -342,6 +335,7 @@ function mapController() {
 			var media = $('[map-pos="' + map_current_pos + '"]');
 			createMediaPlayer($(media).attr("id-media"));
 			break;
+		case KEY_MENU:
 		case KEY_RETURN: // RETURN button
 			// menu
 			$(".mdl-layout__drawer").addClass("is-visible");
@@ -349,9 +343,6 @@ function mapController() {
 			break;
 		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();
-			break;
-		default:
-			console.log("Key code : " + e.keyCode);
 			break;
 		}
 	});
@@ -365,7 +356,6 @@ function mapMoveUp() {
 	}
 
 	selectMapMedia(map_current_pos);
-	console.log("map ", map_current_pos);
 }
 
 function mapMoveDown() {
@@ -376,6 +366,4 @@ function mapMoveDown() {
 	}
 
 	selectMapMedia(map_current_pos);
-	console.log("map ", map_current_pos);
-
 }

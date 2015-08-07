@@ -70,6 +70,10 @@ body {
 	font-size: 2.4em;
 }
 
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+	color: grey;
+}
+
 .mdl-layout__drawer>.mdl-layout-title {
 	padding-top: 30px;
 }
@@ -132,4 +136,22 @@ input#search-input,label.mdl-textfield__label {
 
 #search-input {
 	border: none;
+}
+
+/* Barra de tabs */
+.mdl-layout--fixed-tabs .mdl-layout__tab-bar {
+	padding-left: 5%;
+	overflow: hidden;
+	width: calc(100% - 5%);
+}
+
+.mdl-layout.is-upgraded .mdl-layout__tab {
+	color: rgb(255, 255, 255);
+	height: 100%;
+	font-size: 3em;
+	line-height: 2.3;
+}
+
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
+	height: 5px;
 }

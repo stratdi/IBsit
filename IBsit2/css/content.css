@@ -94,6 +94,10 @@
 	top: 120px;
 }
 
+#up.categories {
+	top: 220px !important;
+}
+
 #down {
 	bottom: 20px;
 }
@@ -105,4 +109,30 @@
 .minilogo i.material-icons {
 	float: right;
 	font-size: 4em;
+}
+
+.no-results {
+	background-color: grey;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px
+		rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+	width: 100%;
+}
+
+button.controller-action {
+	color: #fff;
+	text-shadow: -1px 1px #417cb8;
+	border: none;
+	font-size: 2em;
+	line-height: 1em;
+	height: 100%;
+	padding: 0;
+	margin: 0 auto;
+}
+
+button#left-cat {
+	background-color: rgb(244, 67, 54);
+}
+
+button#right-cat {
+	background-color: rgb(63, 81, 181);
 }

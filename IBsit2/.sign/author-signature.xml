@@ -8,7 +8,7 @@
 </Reference>
 <Reference URI="css%2Fcontent.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>gVpyufRMLtIVvldAsQyJU+QmGerzPTpsMEwnv5yAqxo=</DigestValue>
+<DigestValue>unu2qFIWgW/RpE+38e75YhRW10YKmJPdI6womqDmpWg=</DigestValue>
 </Reference>
 <Reference URI="css%2Fmap.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -16,7 +16,7 @@
 </Reference>
 <Reference URI="css%2Fmenu.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>/tmBOza93PFsUgwqw9H+E4RH7qqq3wc8aX/c00fmwKs=</DigestValue>
+<DigestValue>PhMyra3dYYWDk8GppSbla20MoqhGMZS3PbhAHJ1TrpM=</DigestValue>
 </Reference>
 <Reference URI="css%2Fplayer.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -36,19 +36,23 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>h+Qtbcql4xNEkz40u12mZIN8DSM6khXnAMncttn4m4s=</DigestValue>
+<DigestValue>T2QtLE/4eZFJfaLvaM1pZXYddNin11bqsVTGQaBvfko=</DigestValue>
 </Reference>
 <Reference URI="js%2Fajax.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>PYYcOlEPCn4MFNsjs779aL+bl5dgZ9gGlQtGrCl+IXc=</DigestValue>
+<DigestValue>cc0X4Xog4RHOJdFfnrN1870zWYn7AX11BQ9go2ejVUM=</DigestValue>
+</Reference>
+<Reference URI="js%2Fcategories.js">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>dL7sz9V1AU5m0T9D5PqtF+6/xxyxjnQ/Mc2kjWq6fb4=</DigestValue>
 </Reference>
 <Reference URI="js%2FcontrollerMapping.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>YNjsx3gZ4Myzbh1TSkTCdob6fNf2AiJRjXNnt5Au8AI=</DigestValue>
+<DigestValue>DTkj6qayB2GHu4OIIRRPnz/rcr7iFCtn7/o3oi/Ylc8=</DigestValue>
 </Reference>
 <Reference URI="js%2Fgrid.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>h9Ch+m4FIER7Vx5/JdPElVQH1UHNxCJ3CSa1B4OYgpY=</DigestValue>
+<DigestValue>t4/WJH1utVdSFCgqpIsmdOkechWc7gJOCDQxSjgYCAo=</DigestValue>
 </Reference>
 <Reference URI="js%2Fjquery-git2.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -64,15 +68,15 @@
 </Reference>
 <Reference URI="js%2Fkeys.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>GVqco272vR0DC4J1PFy+varcv7+9hwlF+qvrqPjRHA4=</DigestValue>
+<DigestValue>lHJB82Qg1XbEy+TxV5/eVQPqqCZUwQr4jZqhdrGZz8g=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>F1mKiEg8XhLUdLBLBoiULT2aT6eLGHsoVy/PMsI7kk8=</DigestValue>
+<DigestValue>2gE7TTcPfb49dogwaq644+fDTc5kji4+tUjYcKcpQ1s=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmap.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>yScD69moBuEr4j793tGZo4Ab2h9iUJqEJMcbe/AnGkk=</DigestValue>
+<DigestValue>bZlLvl0hX28q96Wxo5+2RvlQamURXnE2y7l0fI72PPM=</DigestValue>
 </Reference>
 <Reference URI="js%2Fsearch.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -143,9 +147,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-X22PQcuegvunSlJvn8gWuj4GHFXm7pGN5NmVmOG2zLx332m42VHFPVUHMcLqF28M3VwgDm5gxIkP
-07pOaUIbtBjQ2Z9QyBnj0goEi3RNqi7zLBkEAutoaWP7LLMk/r6URTupS/6tMG0Qk+flkcA1arH0
-t78T5WxOiQwwavtwe/g=
+GPEMFmWUcur308qPzVlbfIH9DYAWUFw9/OQQQj0MeybXnqmFfEmzAbzCiLWZUVwJlgbp/s0zPhJd
+AqDUov5N3FcLzR8F+Mq92MhpVX8qagUgFFQCFqj4hN9bkGuJPz6mL5jX6sDmS6air7d67+EsvEgC
+MymHd/K2lp7kOpUam/w=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

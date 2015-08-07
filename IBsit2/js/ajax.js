@@ -1,37 +1,10 @@
 /**
- * Función que devuelve todo el contenido media de la base de datos de ATB
+ * Función que devuelve todo el contenido media de la base de datos de ATB dada
+ * una categoría. Si el id de categoría es 0, los devuelve todos
  */
-function getAllMedia(callback) {
+function getAllTagsMedia(id, callback) {
 	$.ajax({
 		url : 'http://recerca-ltim.uib.es/~atb/ajax/getAllTagsMedia.php',
-		async : false,
-		contentType : "application/json",
-		dataType : 'jsonp',
-		data : {
-			id : '0'
-		},
-		success : function(response) {
-			// response.data.tags devuelve categorias
-			// response.data.medias devuelve todos los media
-			medias = response.data.medias;
-			total_medias = medias.length;
-			callback(response);
-		},
-		error : function(error) {
-			console.log('Uh Oh!' + JSON.stringify(error, null, 2));
-		}
-	});
-}
-
-/**
- * Función que devuelve todos los tags de un contenido media
- * 
- * @param id
- *            Int del media a obtener los tags
- */
-function getMediaTags(id) {
-	$.ajax({
-		url : 'http://recerca-ltim.uib.es/~atb/ajax/getMediaTags.php',
 		async : false,
 		contentType : "application/json",
 		dataType : 'jsonp',
@@ -39,13 +12,21 @@ function getMediaTags(id) {
 			id : id
 		},
 		success : function(response) {
-			console.log('Success!');
-			console.log(response);
+			medias = response.data.medias;
+			total_medias = medias.length;
+			callback(response);
 		},
 		error : function(error) {
-			console.log('Uh Oh!' + JSON.stringify(error, null, 2));
+			console.log('Error: ' + JSON.stringify(error, null, 2));
 		}
 	});
+}
+
+/**
+ * Función que devuelve todo el contenido media de la base de datos de ATB
+ */
+function getAllMedia(callback) {
+	getAllTagsMedia(0, callback);
 }
 
 /**
@@ -64,11 +45,28 @@ function getMedia(id, callback) {
 			id : id
 		},
 		success : function(response) {
-			console.log('Success!');
 			callback(response.data.media);
 		},
 		error : function(error) {
-			console.log('Uh Oh!' + JSON.stringify(error, null, 2));
+			console.log('Error: ' + JSON.stringify(error, null, 2));
+		}
+	});
+}
+
+/**
+ * Función que devuelve todas las categorías de la base de datos
+ */
+function getAllCategories(callback) {
+	$.ajax({
+		url : 'http://recerca-ltim.uib.es/~atb/ajax/getAllTags.php',
+		async : false,
+		contentType : "application/json",
+		dataType : 'jsonp',
+		success : function(response) {
+			callback(response.data.tags);
+		},
+		error : function(error) {
+			console.log('Error: ' + JSON.stringify(error, null, 2));
 		}
 	});
 }
@@ -83,9 +81,7 @@ function getGpx(id, map) {
 			id : id
 		},
 		success : function(xml) {
-			console.log("hola", $(xml));
 			if (xml) {
-
 				var points = [];
 				var bounds = new google.maps.LatLngBounds();
 				$(xml).find("trkpt").each(function() {
@@ -108,7 +104,7 @@ function getGpx(id, map) {
 			}
 		},
 		error : function(error) {
-			console.log('Uh Oh!' + JSON.stringify(error, null, 2));
+			console.log('Error: ' + JSON.stringify(error, null, 2));
 		}
 	});
 
