@@ -11,7 +11,7 @@ var current_page = Pages.HOME;
 // #########################################################
 var home_current_pos = 0;
 var menu_current_pos = 1;
-var map_current_pos = 0;
+var map_current_pos = -1;
 
 /**
  * Maps the home (grid with all medias) section.
@@ -176,11 +176,18 @@ function menuController() {
 			break;
 		}
 	});
+
+	$(".mdl-navigation__link").click(function() {
+		menu_current_pos = $(this).attr("menu-option");
+		setContentFromMenu();
+		$(".mdl-layout__drawer").removeClass("is-visible");
+	});
 }
 
 function setContentFromMenu() {
-	var optionSelected = Number($(".menu-selected").attr("menu-option"));
-	switch (optionSelected) {
+	//var optionSelected = Number($(".menu-selected").attr("menu-option"));
+	menu_current_pos = Number(menu_current_pos);
+	switch (menu_current_pos) {
 	case 0:
 		if (current_page == Pages.MAP) {
 			existsPageContent();
