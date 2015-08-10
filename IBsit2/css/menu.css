@@ -70,8 +70,8 @@ body {
 	font-size: 2.4em;
 }
 
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
-	color: grey;
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover  {
+	color:grey;
 }
 
 .mdl-layout__drawer>.mdl-layout-title {

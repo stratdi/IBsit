@@ -122,7 +122,7 @@ function allMarkers(response) {
 		});
 
 		infoMarkers[i] = setInfoMarker(marker, map, media);
-	}
+	} 
 }
 
 function setInfoMarker(marker, map, media) {
