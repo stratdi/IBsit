@@ -57,7 +57,6 @@ function gridController() {
 			videoController();
 			var media = $('[pos-cell="' + grid_current_pos + '"]');
 			createMediaPlayer($(media).attr("id-media"));
-
 			break;
 		case KEY_MENU:
 		case KEY_RETURN: // RETURN button
@@ -297,6 +296,7 @@ function videoController() {
 		case KEY_RETURN: // RETURN button
 			// menu
 			bindControllerFromMenu();
+	        $('video').get(0).pause();
 			$("#player").remove();
 			break;
 		case KEY_EXIT: // EXIT

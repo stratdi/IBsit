@@ -3,6 +3,20 @@
  * una categoría. Si el id de categoría es 0, los devuelve todos
  */
 function getAllTagsMedia(id, callback) {
+	console.log("pa denteo!");
+	
+	var div_loading_append;
+	
+	if (!$(".page-content").length) {
+		console.log("jeje...");
+		div_loading_append = $("#map-menu");
+	}else{
+		div_loading_append = $(".page-content");
+	}
+	
+	$(div_loading_append).html('<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate progress-demo"></div>');
+	componentHandler.upgradeDom('MaterialProgress');
+
 	$.ajax({
 		url : 'http://recerca-ltim.uib.es/~atb/ajax/getAllTagsMedia.php',
 		async : false,
@@ -14,6 +28,8 @@ function getAllTagsMedia(id, callback) {
 		success : function(response) {
 			medias = response.data.medias;
 			total_medias = medias.length;
+			$(".page-content").empty();
+			$("#map-menu").empty();
 			callback(response);
 		},
 		error : function(error) {

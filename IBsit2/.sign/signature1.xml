@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>xkof2ImPuYVxXQRIkayOPUaWrM6zQDECKZRUwucrbgA=</DigestValue>
+<DigestValue>VmwGkbJ+0eAOn9wDDqbmGIVB5s7x2lQNtjg9w1Ze+qs=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -52,7 +52,7 @@
 </Reference>
 <Reference URI="js%2FcontrollerMapping.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>DTkj6qayB2GHu4OIIRRPnz/rcr7iFCtn7/o3oi/Ylc8=</DigestValue>
+<DigestValue>JEpBiV2KPRugn30CSukZfRQ1154djTo0CAfP5qcl84w=</DigestValue>
 </Reference>
 <Reference URI="js%2Fgrid.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -151,9 +151,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-PcJNAPPG9hUzyxBXDHFfiAmyZjYaR0Sz97Alegi95pzfA08kGQvLsC79En99nwI4e83jv/tgJYoI
-9czaa5nWzza84QD+kJOVWA26Kj6eIlyprP+XCFiIu0WcmZarMeH0wn3tNTg2MlfAUJtVdveboFkA
-ipgkaAx4SOfOoSm4GLo=
+tSfn5bWbwU4Yd4ecsnSJ0lkYboFBbbxDmJO2ENeQHbQ+HVFUaDzFnp3y3uvRK5NAZYEaOPekCpri
+9cJrkJBzxClqaSjD6i5X/vffuc+TLSj4x8Mak2dX0+7toyEPnsOpr5+7PcklVRwjpjAQ4A174jwt
+B1Pyqgeb0nBWCc/Zh2A=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
