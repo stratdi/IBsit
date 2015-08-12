@@ -37,7 +37,7 @@ function homeGrid(medias) {
 
 	grid += "</div>";
 
-	$(".page-content").empty().append(grid);
+	$(".page-content").html(grid);
 	homeScroll();
 
 	selectMedia(0);

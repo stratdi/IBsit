@@ -219,7 +219,7 @@ function removeSearchText() {
 
 function existsPageContent() {
 	if (!$(".page-content").length) {
-		$(".mdl-layout__content").empty().append(
+		$(".mdl-layout__content").html(
 				"<div class='page-content'></div>");
 	}
 }
@@ -297,6 +297,55 @@ function videoController() {
 			// menu
 			bindControllerFromMenu();
 	        $('video').get(0).pause();
+	        $('video').get(0).src = '';
+	        $('video').children('source').prop('src','');
+			$("#player").remove().length = 0;
+			break;
+		case KEY_EXIT: // EXIT
+			tizen.application.getCurrentApplication().exit();
+			break;
+		}
+	});
+}
+
+//#########################################################
+//# PANORAMIC CONTROLLER MAP
+//#########################################################
+function panoramicController() {
+
+	$(document).unbind('keydown');
+	$(document).bind('keydown', function(e) {
+		switch (e.keyCode) {
+
+		case KEY_LEFT: // LEFT - REWIND
+			panoMoveLeft();
+			e.preventDefault();
+			break;
+		case KEY_RIGHT: // RIGHT - FORWARD
+			panoMoveRight();
+			e.preventDefault();
+			break;
+		case KEY_UP:
+			panoMoveUp();
+			e.preventDefault();
+			break;
+		case KEY_DOWN:
+			panoMoveDown();
+			e.preventDefault();
+			break;
+		case KEY_OK: // OK button
+			break;
+		case KEY_INFO: // INFO button
+			if ($("#info-media").css("opacity") == 0) {
+				$("#info-media").css("opacity", 1);
+			} else {
+				$("#info-media").css("opacity", 0);
+			}
+			break;
+		case KEY_STOP:
+		case KEY_RETURN: // RETURN button
+			// menu
+			bindControllerFromMenu();
 			$("#player").remove();
 			break;
 		case KEY_EXIT: // EXIT

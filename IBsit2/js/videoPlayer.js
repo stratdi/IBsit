@@ -33,7 +33,13 @@ function createMediaPlayer(id) {
 	case MediaTypes.VIDEO_SPHERE:
 		// Not supported in TV
 		break;
+	case MediaTypes.PANORAMA:
 	case MediaTypes.PANORAMA_SPHERE:
+		$("body").append(player+ "</div>");
+		$("#player-loading").show();
+		panoramicController();
+		initThree(id);
+		animate();
 		break;
 	default:
 		break;
