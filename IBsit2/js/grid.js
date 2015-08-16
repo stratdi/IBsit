@@ -4,10 +4,6 @@ function homeGrid(medias) {
 
 	if (medias.length != 0) {
 		for (var i = 0; i < medias.length; i++) {
-
-			// medias[i].type.toString() != "VIDEO_PANO" &&
-			// medias[i].type.toString() != "VIDEO_SPHERE"
-			if (true) {
 				var cell = "<div class='mdl-cell mdl-cell--3-col' pos-cell="
 						+ i
 						+ " id-media='"
@@ -29,7 +25,6 @@ function homeGrid(medias) {
 						+ medias[i].name + "</div>" + "</div></div></div>";
 
 				grid += cell;
-			}
 		}
 	}else{
 		grid += "<div class='no-results'><h2>No results found...</h2></div>";
@@ -132,6 +127,6 @@ function unselectMedia(id) {
 
 function loadHome(response) {
 	hideTabs();
-	homeGrid(response.data.medias);
+	homeGrid(response);
 	homeGridController();
 }

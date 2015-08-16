@@ -1,4 +1,6 @@
 var id_current_media;
+var url_media_video = "http://recerca-ltim.uib.es/~atb/res/media/{id}/media.mp4";
+var url_media_pano = "http://recerca-ltim.uib.es/~atb/res/media/{id}/media.jpg";
 
 var MediaTypes = {
 	VIDEO : "VIDEO",
@@ -8,67 +10,69 @@ var MediaTypes = {
 	PANORAMA_SPHERE : "PANORAMA_SPHERE"
 }
 
+function showPlayer() {
+	$("#player").show();
+}
+
+function hidePlayer() {
+	$("#player").hide();
+}
+
 function createMediaPlayer(id) {
 	id_current_media = id;
-	var player = "<div id='player'>";
-	player += "<div id='player-loading'class='mdl-spinner mdl-js-spinner is-active'></div>";
+
+	showPlayer();
 
 	var media = $('[id-media="' + id + '"]');
-
 	var type = $(media).attr("media-type");
+
 	switch (type) {
 	case MediaTypes.VIDEO:
-		player += videoPlayer(id) + "</div>";
-		$("body").append(player);
-
-		playerActions();
-		progressBarEvents();
-
-		getMedia(id, function(response) {
-			mediaInfo(response);
-		});
-
+		loadVideo(id);
 		break;
+
 	case MediaTypes.VIDEO_PANO:
 	case MediaTypes.VIDEO_SPHERE:
 		// Not supported in TV
 		break;
+
 	case MediaTypes.PANORAMA:
 	case MediaTypes.PANORAMA_SPHERE:
-		$("body").append(player+ "</div>");
 		$("#player-loading").show();
 		panoramicController();
-		initThree(id);
-		animate();
+		loadPano(id);
 		break;
+
 	default:
 		break;
-	}	
+	}
 }
 
 // VIDEO PLAYER
-function videoPlayer(id) {
-	var video = "<video id='video' src='http://recerca-ltim.uib.es/~atb/res/media/"
-			+ id + "/media.mp4' autoplay></video>";
-	var controls = "<div class='video-controls'>"
-			+ "<progress id='progress-bar' min='0' max='100' value='0'></progress>"
-			+ "<button id='rewind' class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'>"
-			+ "<i class='material-icons'>&#xE020;</i></button>"
-			+ "<button id='play' class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'>"
-			+ "<i class='material-icons'>&#xE037;</i></button>"
-			+ "<button id='pause' class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'>"
-			+ "<i class='material-icons'>&#xE034;</i></button>"
-			+ "<button id='replay' class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'>"
-			+ "<i class='material-icons'>&#xE042;</i></button>"
-			+ "<button id='forward' class='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'>"
-			+ "<i class='material-icons'>&#xE01F;</i></button></div>";
+function loadVideo(id) {
+	$("video").show();
+	$("#player-loading").show();
+	$("video").get(0).src = url_media_video.replace("{id}", id);
+	getMedia(id, function(response) {
+		mapLoad(response);
+	});
+}
 
-	var info = "<div id='info-media'><div id='map-position'></div><div id='map-tracking'></div></div>";
+function stopVideo() {
+	$('video').get(0).pause();
+	$('video').get(0).src = '';
+	$('video').children('source').prop('src', '');
+	$("#progress-bar").val(0);
+	hidePlayer();
+}
 
-	video += controls;
-	video += info;
+function loadPano(id) {
+	loadPanoImage(id);
+	animate();
+}
 
-	return video;
+function stopPano(){
+	
 }
 
 function trackingLoad(response) {
@@ -101,21 +105,16 @@ function mapLoad(response) {
 	};
 
 	var map = new google.maps.Map($("#map-position").get(0), optionsMap);
-	//google.maps.event.trigger(map, 'resize');
+	// google.maps.event.trigger(map, 'resize');
 
 	var marker = new google.maps.Marker({
 		position : myLatlng,
 		map : map,
 		animation : google.maps.Animation.DROP,
-		title : "Hola Mundo"
+		title : ""
 	});
 
 	trackingLoad(response);
-}
-
-function mediaInfo(response) {
-
-	mapLoad(response);
 }
 
 function progressBarEvents() {
@@ -180,12 +179,17 @@ function playerActions() {
 
 	var i = null;
 	$("body").mousemove(function() {
-		clearTimeout(i);
-		$(".video-controls").fadeIn("fast");
-		i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
+		
+		console.log("seerr",$('video').get(0).src);
+		if ($("video").get(0).currentSrc) {
+			clearTimeout(i);
+			$(".video-controls").fadeIn("fast");
+			i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
+		}
+		
 	});
 
-	$("#info-media").css("opacity","0");
+	$("#info-media").css("opacity", "0");
 }
 
 function rewind() {
@@ -193,6 +197,7 @@ function rewind() {
 	$("video")[0].currentTime = $("video")[0].currentTime - 5;
 	$("video")[0].play();
 	$("#play").hide();
+	$("#replay").hide();
 	$("#pause").show();
 }
 
@@ -201,6 +206,7 @@ function forward() {
 	$("video")[0].currentTime = $("video")[0].currentTime + 5;
 	$("video")[0].play();
 	$("#play").hide();
+	$("#replay").hide();
 	$("#pause").show();
 }
 

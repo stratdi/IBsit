@@ -8,7 +8,7 @@ function loadCategories() {
 	} else {
 		showTabs();
 		getAllTagsMedia($(".mdl-layout__tab").first().attr("category-id"),
-				loadTabContent);
+				homeGrid);
 	}
 	categoriesGridController();
 }
@@ -21,7 +21,7 @@ function createTabs(categories) {
 
 	for ( var c in categories) {
 		tabs += "<a href='#fixed-tab-" + c
-				+ "' class='mdl-layout__tab' category-id='" + categories[c].id
+				+ "' class='mdl-layout__tab' tab-pos='"+c+"' category-id='" + categories[c].id
 				+ "'>" + categories[c].name + "</a>";
 	}
 	tabs += "<button class='controller-action' id='right-cat'><i class='material-icons'>&#xE315;</i></button>";
@@ -37,12 +37,13 @@ function createTabs(categories) {
 						"is-active");
 				$(this).addClass("is-active");
 				var cat_id = $(this).attr("category-id");
-				getAllTagsMedia(cat_id, loadTabContent);
+				getAllTagsMedia(cat_id, homeGrid);
 				grid_current_pos = 0;
+				current_tab = $(this).attr("tab-pos");
 			});
 
 	getAllTagsMedia($(".mdl-layout__tab").first().attr("category-id"),
-			loadTabContent);
+			homeGrid);
 
 	$("#left-cat").click(function() {
 		selectLeftTab();
@@ -51,10 +52,6 @@ function createTabs(categories) {
 	$("#right-cat").click(function() {
 		selectRightTab();
 	});
-}
-
-function loadTabContent(medias) {
-	homeGrid(medias.data.medias);
 }
 
 function selectLeftTab() {
@@ -75,7 +72,8 @@ function selectTab() {
 	$(".mdl-layout__tab-bar").children(".is-active").removeClass("is-active");
 	$(".mdl-layout__tab:eq(" + current_tab + ")").addClass("is-active");
 	getAllTagsMedia($(".mdl-layout__tab:eq(" + current_tab + ")").attr(
-			"category-id"), loadTabContent);
+			"category-id"), homeGrid);
+	grid_current_pos = 0;
 }
 
 function hideTabs() {

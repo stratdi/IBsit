@@ -13,9 +13,7 @@ var grid_current_pos = 0;
 var menu_current_pos = 1;
 var map_current_pos = -1;
 
-/**
- * Maps the home (grid with all medias) section.
- */
+
 function homeGridController() {
 	current_page = Pages.HOME;
 	unselectMenuOption(menu_current_pos);
@@ -33,7 +31,6 @@ function categoriesGridController() {
 }
 
 function gridController() {
-	grid_current_pos = 0;
 
 	$(document).unbind('keydown');
 	$(document).bind('keydown', function(e) {
@@ -105,16 +102,14 @@ function homeMoveUp() {
 
 	if (grid_current_pos - 4 >= 0) {
 		grid_current_pos -= 4;
+		selectMedia(grid_current_pos);
 	} else {
-		grid_current_pos = 0;
+		$("#search-input").focus();
 	}
-
-	selectMedia(grid_current_pos);
 }
 
 function homeMoveDown() {
 	unselectMedia(grid_current_pos);
-
 	if (grid_current_pos + 4 < total_medias) {
 		grid_current_pos += 4;
 	} else {
@@ -135,6 +130,10 @@ function searchController() {
 		case KEY_KEYBOARD_OK:
 			$("#search-input").blur();
 			search();
+			break;
+		case KEY_KEYBOARD_CANCEL:
+			$("#search-input").blur();
+			selectMedia(grid_current_pos);
 			break;
 		}
 	});
@@ -181,6 +180,8 @@ function setContentFromMenu() {
 	menu_current_pos = Number(menu_current_pos);
 	switch (menu_current_pos) {
 	case 0:
+		grid_current_pos = 0;
+
 		if (current_page == Pages.MAP) {
 			existsPageContent();
 			removeSearchText();
@@ -190,12 +191,14 @@ function setContentFromMenu() {
 
 		break;
 	case 1:
+		grid_current_pos = 0;
 		current_page = Pages.HOME;
 		existsPageContent();
 		removeSearchText();
 		getAllMedia(loadHome);
 		break;
 	case 2:
+		grid_current_pos = 0;
 		current_page = Pages.CATEGORIES;
 		existsPageContent();
 		removeSearchText();
@@ -219,8 +222,7 @@ function removeSearchText() {
 
 function existsPageContent() {
 	if (!$(".page-content").length) {
-		$(".mdl-layout__content").html(
-				"<div class='page-content'></div>");
+		$(".mdl-layout__content").html("<div class='page-content'></div>");
 	}
 }
 
@@ -274,43 +276,50 @@ function videoController() {
 		switch (e.keyCode) {
 
 		case KEY_REWIND:
-		case KEY_LEFT: // LEFT - REWIND
+		case KEY_LEFT:
 			rewind();
 			e.preventDefault();
 			break;
 		case KEY_FORWARD:
-		case KEY_RIGHT: // RIGHT - FORWARD
+		case KEY_RIGHT: 
 			forward();
 			e.preventDefault();
 			break;
-		case KEY_OK: // OK button
-			break;
-		case KEY_INFO: // INFO button
-			if ($("#info-media").css("opacity") == 0) {
-				$("#info-media").css("opacity", 1);
-			} else {
-				$("#info-media").css("opacity", 0);
-			}
+		case KEY_EXTRA:
+		case KEY_INFO:
+			toggleExtraInfoPlayer();
 			break;
 		case KEY_STOP:
-		case KEY_RETURN: // RETURN button
-			// menu
+		case KEY_RETURN: 
 			bindControllerFromMenu();
-	        $('video').get(0).pause();
-	        $('video').get(0).src = '';
-	        $('video').children('source').prop('src','');
-			$("#player").remove().length = 0;
+			stopVideo();
 			break;
-		case KEY_EXIT: // EXIT
+		case KEY_EXIT: 
 			tizen.application.getCurrentApplication().exit();
 			break;
 		}
 	});
 }
 
-//#########################################################
-//# PANORAMIC CONTROLLER MAP
-//#########################################################
+function toggleExtraInfoPlayer(){
+	toggleInfoMap();
+}
+
+function toggleInfoMap(){
+	if ($("#info-media").css("opacity") == 0) {
+		$("#info-media").css("opacity", 1);
+	} else {
+		$("#info-media").css("opacity", 0);
+	}
+}
+
+function togglePlayerActions(){
+	
+}
+
+// #########################################################
+// # PANORAMIC CONTROLLER MAP
+// #########################################################
 function panoramicController() {
 
 	$(document).unbind('keydown');
@@ -346,7 +355,8 @@ function panoramicController() {
 		case KEY_RETURN: // RETURN button
 			// menu
 			bindControllerFromMenu();
-			$("#player").remove();
+			// $("#player").remove();
+			cancelAnimation();
 			break;
 		case KEY_EXIT: // EXIT
 			tizen.application.getCurrentApplication().exit();

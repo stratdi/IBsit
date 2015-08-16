@@ -5,6 +5,8 @@
     <tizen:content-security-policy>
 		script-src: 'self'
 	</tizen:content-security-policy>
+	<access origin='*' subdomains='true'/>
+	
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://www.samsungdforum.com/feature/Gesture"/>

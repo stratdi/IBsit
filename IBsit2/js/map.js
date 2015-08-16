@@ -11,9 +11,9 @@ var islands = [ "Mallorca", "Menorca", "Ibiza", "Formentera" ];
 
 function loadMap() {
 
-	var bigMap = "<div id='map-menu'></div><div id='big-map'></div>";
+	var bigMap = "<div id='map-menu'></div><div id='big-map' style='opacity: 0;'></div>";
 
-	$(".mdl-layout__content").empty().append(bigMap);
+	$(".mdl-layout__content").html(bigMap);
 	$(".mdl-layout__header").css("height", "0");
 	$(".is-casting-shadow").css("height", "0");
 
@@ -28,6 +28,11 @@ function loadMap() {
 	};
 
 	map = new google.maps.Map($("#big-map").get(0), optionsMap);
+
+	google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
+		$("#big-map").css("opacity", "1");
+		$("#map-loading").hide();
+	});
 
 	getAllMedia(allMarkers);
 }
@@ -48,14 +53,18 @@ function mapMenuLoader(medias) {
 						+ medias[i].id + " media-type=" + medias[i].type + ">"
 						+ medias[i].name + "</div>");
 	}
-	
-	$(".menu-map-option").click(function(){
+
+	$(".mdl-layout__content")
+			.append(
+					'<div id="map-loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate progress-demo" style="z-index:9999;"></div>');
+	componentHandler.upgradeDom('MaterialProgress');
+
+	$(".menu-map-option").click(function() {
 		unselectMapMedia($(".map-menu-selected").attr("map-pos"));
 		selectMapMedia($(this).attr("map-pos"));
 	});
-		
+
 	mapController();
-	var mapMenu = "";
 }
 
 function compareIslands(a, b) {
@@ -97,9 +106,9 @@ function compareIslands(a, b) {
 }
 
 // Markers functions
-function allMarkers(response) {
+function allMarkers(medias) {
 
-	var medias = response.data.medias;
+	var medias = medias;
 	var media;
 	var myLatlng;
 
@@ -122,7 +131,7 @@ function allMarkers(response) {
 		});
 
 		infoMarkers[i] = setInfoMarker(marker, map, media);
-	} 
+	}
 }
 
 function setInfoMarker(marker, map, media) {

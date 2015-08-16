@@ -10,6 +10,7 @@ var init = function() {
 		tizen.tvinputdevice.registerKey('MediaPlay');
 		tizen.tvinputdevice.registerKey('MediaPause');
 		tizen.tvinputdevice.registerKey('MediaStop');
+		tizen.tvinputdevice.registerKey('Extra');
 
 		tizen.tvinputdevice.registerKey('Menu');
 		tizen.tvinputdevice.registerKey('Info');
@@ -20,10 +21,12 @@ var init = function() {
 
 	$("#search-input").focus(function() {
 		searchController();
+		unselectMedia(grid_current_pos);
 	});
 
 	$("#search-input").blur(function() {
 		bindControllerFromMenu();
+		selectMedia(grid_current_pos);
 	});
 
 	getAllMedia(loadHome);
@@ -43,6 +46,11 @@ var init = function() {
 	$(".mdl-layout__obfuscator").click(function() {
 		bindControllerFromMenu();
 	});
+	
+	playerActions();
+	progressBarEvents();
+	
+	hidePlayer();
 };
 
 // window.onload can work without <body onload="">

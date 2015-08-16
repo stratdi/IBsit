@@ -8,6 +8,8 @@
  * Búsqueda de archivos media por nombre, lugar o isla
  */
 function search() {
+	grid_current_pos = 0;
+
 	var search = $("#search-input").val().toLowerCase();
 	var result = $.grep(medias, function(el) {
 		return el.name.toLowerCase().indexOf(search) > -1
