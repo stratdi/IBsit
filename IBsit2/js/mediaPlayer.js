@@ -28,6 +28,7 @@ function createMediaPlayer(id) {
 
 	switch (type) {
 	case MediaTypes.VIDEO:
+		videoController();
 		loadVideo(id);
 		break;
 
@@ -105,7 +106,6 @@ function mapLoad(response) {
 	};
 
 	var map = new google.maps.Map($("#map-position").get(0), optionsMap);
-	// google.maps.event.trigger(map, 'resize');
 
 	var marker = new google.maps.Marker({
 		position : myLatlng,
@@ -177,16 +177,16 @@ function playerActions() {
 
 	$(".video-controls").hide();
 
-	var i = null;
-	$("body").mousemove(function() {
-		
-		if ($("video").get(0).currentSrc) {
-			clearTimeout(i);
-			$(".video-controls").fadeIn("fast");
-			i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
-		}
-		
-	});
+//	var i = null;
+//	$("body").mousemove(function() {
+//		
+//		if ($("video").get(0).currentSrc) {
+//			clearTimeout(i);
+//			$(".video-controls").fadeIn("fast");
+//			i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
+//		}
+//		
+//	});
 
 	$("#info-media").css("opacity", "0");
 }

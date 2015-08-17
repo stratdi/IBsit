@@ -340,9 +340,13 @@ function toggleExtraInfoPlayer() {
 }
 
 function toggleInfoMap() {
+	console.log("toggling");
 	if ($("#info-media").css("opacity") == 0) {
+		console.log("yes!!");
 		$("#info-media").css("opacity", 1);
 	} else {
+		console.log("oh..!!");
+
 		$("#info-media").css("opacity", 0);
 	}
 }
