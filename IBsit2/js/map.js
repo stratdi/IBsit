@@ -132,6 +132,8 @@ function allMarkers(medias) {
 
 		infoMarkers[i] = setInfoMarker(marker, map, media);
 	}
+	
+	selectMapMedia(0);
 }
 
 function setInfoMarker(marker, map, media) {

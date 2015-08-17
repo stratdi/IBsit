@@ -11,8 +11,8 @@ var current_page = Pages.HOME;
 // #########################################################
 var grid_current_pos = 0;
 var menu_current_pos = 1;
-var map_current_pos = -1;
-
+var map_current_pos = 0;
+var is_selecting_tab = false;
 
 function homeGridController() {
 	current_page = Pages.HOME;
@@ -51,9 +51,12 @@ function gridController() {
 			e.preventDefault();
 			break;
 		case KEY_OK: // OK button
-			videoController();
-			var media = $('[pos-cell="' + grid_current_pos + '"]');
-			createMediaPlayer($(media).attr("id-media"));
+			if (is_selecting_tab) {
+				selectTabFromController();
+			} else {
+				var media = $('[pos-cell="' + grid_current_pos + '"]');
+				createMediaPlayer($(media).attr("id-media"));
+			}
 			break;
 		case KEY_MENU:
 		case KEY_RETURN: // RETURN button
@@ -79,22 +82,38 @@ function gridController() {
 }
 
 function homeMoveLeft() {
-	unselectMedia(grid_current_pos);
+	if (!is_selecting_tab) {
+		unselectMedia(grid_current_pos);
 
-	if (grid_current_pos - 1 >= 0) {
-		grid_current_pos -= 1;
+		if (grid_current_pos - 1 >= 0) {
+			grid_current_pos -= 1;
+		}
+		selectMedia(grid_current_pos);
+	} else {
+		var tab = Number($(".tab-selected").attr("tab-pos"));
+		if (tab - 1 >= 0) {
+			blurTab();
+			focusTab(tab - 1);
+		}
 	}
-	selectMedia(grid_current_pos);
 }
 
 function homeMoveRight() {
-	unselectMedia(grid_current_pos);
+	if (!is_selecting_tab) {
+		unselectMedia(grid_current_pos);
 
-	if (grid_current_pos + 1 < total_medias) {
-		grid_current_pos += 1;
+		if (grid_current_pos + 1 < total_medias) {
+			grid_current_pos += 1;
+		}
+
+		selectMedia(grid_current_pos);
+	} else {
+		var tab = Number($(".tab-selected").attr("tab-pos"));
+		if (tab + 1 < total_categories) {
+			blurTab();
+			focusTab(tab + 1);
+		}
 	}
-
-	selectMedia(grid_current_pos);
 }
 
 function homeMoveUp() {
@@ -104,18 +123,32 @@ function homeMoveUp() {
 		grid_current_pos -= 4;
 		selectMedia(grid_current_pos);
 	} else {
-		$("#search-input").focus();
+		console.log();
+		if ((!$(".mdl-layout__tab-bar").length || !$(".mdl-layout__tab-bar")
+				.is(':visible'))
+				|| is_selecting_tab) {
+			is_selecting_tab = false;
+			blurTab();
+			$("#search-input").focus();
+		} else {
+			is_selecting_tab = true;
+			focusTab(current_tab);
+		}
 	}
 }
 
 function homeMoveDown() {
-	unselectMedia(grid_current_pos);
-	if (grid_current_pos + 4 < total_medias) {
-		grid_current_pos += 4;
+	if (!is_selecting_tab) {
+		unselectMedia(grid_current_pos);
+		if (grid_current_pos + 4 < total_medias) {
+			grid_current_pos += 4;
+		} else {
+			grid_current_pos = total_medias - 1;
+		}
 	} else {
-		grid_current_pos = total_medias - 1;
+		is_selecting_tab = false;
+		blurTab();
 	}
-
 	selectMedia(grid_current_pos);
 }
 
@@ -160,6 +193,8 @@ function menuController() {
 			break;
 		case KEY_OK: // OK button
 			// selecciona opcion
+			is_selecting_tab = false;
+			blurTab();
 			$(".mdl-layout__drawer").removeClass("is-visible");
 			setContentFromMenu();
 			break;
@@ -281,7 +316,7 @@ function videoController() {
 			e.preventDefault();
 			break;
 		case KEY_FORWARD:
-		case KEY_RIGHT: 
+		case KEY_RIGHT:
 			forward();
 			e.preventDefault();
 			break;
@@ -290,22 +325,22 @@ function videoController() {
 			toggleExtraInfoPlayer();
 			break;
 		case KEY_STOP:
-		case KEY_RETURN: 
+		case KEY_RETURN:
 			bindControllerFromMenu();
 			stopVideo();
 			break;
-		case KEY_EXIT: 
+		case KEY_EXIT:
 			tizen.application.getCurrentApplication().exit();
 			break;
 		}
 	});
 }
 
-function toggleExtraInfoPlayer(){
+function toggleExtraInfoPlayer() {
 	toggleInfoMap();
 }
 
-function toggleInfoMap(){
+function toggleInfoMap() {
 	if ($("#info-media").css("opacity") == 0) {
 		$("#info-media").css("opacity", 1);
 	} else {
@@ -313,8 +348,8 @@ function toggleInfoMap(){
 	}
 }
 
-function togglePlayerActions(){
-	
+function togglePlayerActions() {
+
 }
 
 // #########################################################

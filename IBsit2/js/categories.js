@@ -2,7 +2,7 @@ var current_tab = 0;
 var total_categories;
 
 function loadCategories() {
-
+	current_tab = 0;
 	if (!$(".mdl-layout__tab").length) {
 		getAllCategories(createTabs);
 	} else {
@@ -66,6 +66,23 @@ function selectRightTab() {
 		current_tab++;
 		selectTab();
 	}
+}
+
+function selectTabFromController(){
+	current_tab = Number($(".tab-selected").attr("tab-pos"));
+	is_selecting_tab = false;
+	blurTab();
+	selectTab();
+}
+
+function focusTab(id){
+	var tab = $('a[tab-pos="' + id + '"]');
+
+	$(tab).addClass("tab-selected");
+}
+
+function blurTab(){
+	$(".tab-selected").removeClass("tab-selected");
 }
 
 function selectTab() {
