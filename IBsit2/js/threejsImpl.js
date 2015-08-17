@@ -54,46 +54,17 @@ function loadPanoImage(id) {
 
 function loadPanoMouseEvents() {
 	// Eventos de mouse
-	document.addEventListener('mousedown', onDocumentMouseDown, false);
-	document.addEventListener('mousemove', onDocumentMouseMove, false);
-	document.addEventListener('mouseup', onDocumentMouseUp, false);
-
-	document.addEventListener('dragover', function(event) {
-		event.preventDefault();
-		event.dataTransfer.dropEffect = 'copy';
-	}, false);
-
-	document.addEventListener('dragenter', function(event) {
-		document.body.style.opacity = 0.5;
-	}, false);
-
-	document.addEventListener('dragleave', function(event) {
-		document.body.style.opacity = 1;
-	}, false);
-
-	document.addEventListener('drop', function(event) {
-		event.preventDefault();
-		var reader = new FileReader();
-		reader.addEventListener('load', function(event) {
-			material.map.image.src = event.target.result;
-			material.map.needsUpdate = true;
-
-		}, false);
-		reader.readAsDataURL(event.dataTransfer.files[0]);
-		document.body.style.opacity = 1;
-
-	}, false);
-	window.addEventListener('resize', onWindowResize, false);
+	$(document).bind('mousedown',onDocumentMouseDown);
+	$(document).bind('mousemove', onDocumentMouseMove);
+	$(document).bind('mouseup',onDocumentMouseUp);
+	$(document).bind('resize', onWindowResize);
 }
 
 function unloadPanoMouseEvents(){
-	$(document).unbind('mousedown');
-	$(document).unbind('mousemove');
-	$(document).unbind('mouseup');
-	$(document).unbind('dragover');
-	$(document).unbind('dragenter');
-	$(document).unbind('dragleave');
-	$(document).unbind('drop');
+	$(document).unbind('mousedown',onDocumentMouseDown);
+	$(document).unbind('mousemove', onDocumentMouseMove);
+	$(document).unbind('mouseup',onDocumentMouseUp);
+	$(document).unbind('resize', onWindowResize);
 }
 
 function onWindowResize() {
@@ -151,7 +122,6 @@ function cancelAnimation() {
 	mesh.material.dispose();
 	geometry.dispose();
 
-//	mesh.material.map.image.src = null;
 	mesh.material.map.image = null;
 	mesh.material.map.sourceFile = null;
 	mesh.material.map.mipmaps = null;

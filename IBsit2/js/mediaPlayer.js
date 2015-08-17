@@ -180,7 +180,6 @@ function playerActions() {
 	var i = null;
 	$("body").mousemove(function() {
 		
-		console.log("seerr",$('video').get(0).src);
 		if ($("video").get(0).currentSrc) {
 			clearTimeout(i);
 			$(".video-controls").fadeIn("fast");

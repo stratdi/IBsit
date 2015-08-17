@@ -123,7 +123,6 @@ function homeMoveUp() {
 		grid_current_pos -= 4;
 		selectMedia(grid_current_pos);
 	} else {
-		console.log();
 		if ((!$(".mdl-layout__tab-bar").length || !$(".mdl-layout__tab-bar")
 				.is(':visible'))
 				|| is_selecting_tab) {

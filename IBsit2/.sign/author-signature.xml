@@ -8,7 +8,7 @@
 </Reference>
 <Reference URI="css%2Fcontent.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>zdFl6mZLH1SE+qdszE2iDaaPhpChKcqjcUkORUYqrcI=</DigestValue>
+<DigestValue>LP9fwAieIwRlAykiV7KtbbZnfc+Uyk7GYFSqnOfYAfM=</DigestValue>
 </Reference>
 <Reference URI="css%2Fmap.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -36,7 +36,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>fDbi0KbfInbyRdHoeHbUAI8KXY1s0CrPyedk6qd5als=</DigestValue>
+<DigestValue>SLIEakf6+hE7IQ3itr0TrlkNIN73VGhfqzKyzoiSLY4=</DigestValue>
 </Reference>
 <Reference URI="js%2Fajax.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -44,11 +44,11 @@
 </Reference>
 <Reference URI="js%2Fcategories.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>iCuQP/wkZBYZ5r+0dN6pYSMo+4PqBvD8d7GuSeZSXWc=</DigestValue>
+<DigestValue>Zsjif2Z5ziRaVJNEXwWZ++l9Jhik55RnumT8Jg5UfNg=</DigestValue>
 </Reference>
 <Reference URI="js%2FcontrollerMapping.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>9Q/BUpzc5KiRvBGQsgOTb3hjFtSHdgX4m0NA7BVvL6o=</DigestValue>
+<DigestValue>FQavcHV/UKNSFAu4Ebry2fLTeIiFvLfmYhtFwrqFIP4=</DigestValue>
 </Reference>
 <Reference URI="js%2Fgrid.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -78,17 +78,17 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>ZszZ5vwL+TgPsix3CsSkG76f5j1onmw5g1ZGSUVlK4M=</DigestValue>
 </Reference>
-<Reference URI="js%2FpanoPlayer.js">
+<Reference URI="js%2FmediaPlayer.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>ZD90CwUw96v+Gbd0JbaAeS9+alBqGsQgcSqWFrnJwAE=</DigestValue>
+<DigestValue>lQ1d4esOcb9FYzjN/RyN7wfYHiFJVb0Z/Gy2Cr6k0dI=</DigestValue>
 </Reference>
 <Reference URI="js%2Fsearch.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>K+iMU92nd81QiQwgx7NnuNHIPmyABilw0GUlnGSUq9g=</DigestValue>
 </Reference>
-<Reference URI="js%2FvideoPlayer.js">
+<Reference URI="js%2FthreejsImpl.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>XQC+8qoY4UmnnTivqF252p0yFwv6rxJqAqcIjF8Tk1U=</DigestValue>
+<DigestValue>OuGTFimxHwlhtjOsVB4phqH80S1ZTcxeO1F9xgaswSY=</DigestValue>
 </Reference>
 <Reference URI="mdl%2FLICENSE">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -151,9 +151,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-Hn2IPL4SQyYWSI8A3BvcqcJN1zVLEb/0OuI0pRP/25VQYltT98LFsxv40uNyoC8zi193f23IacN4
-8dxk/2NdYebIut73ZPaORz51Xcg2ZUSppxyLzMTi4eq9D7NGWuOMxPZHrGzNbHB7CUR0FUkHhgr7
-FY8NPq49kSL4H4WjJRI=
+OXgMZhnP61o9k0UhIQD9r2csC3dhXRwx7z842JEdBUoYMAXu0XIyb2fiuTk/6ViDfoKnt8wWEprI
+d3ShTjxkrhLw7rGoW/fmLZd9yVEU81WlF21a/q5NJrsYq+48jTotu44fJx9UQmXuf3x0/CTQi0HO
++GTuzx9ao/oqDjywA1s=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
