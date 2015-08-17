@@ -36,10 +36,15 @@ function createTabs(categories) {
 				$(".mdl-layout__tab-bar").children(".is-active").removeClass(
 						"is-active");
 				$(this).addClass("is-active");
+				
+				is_selecting_tab = false;
+				blurTab();
+				
 				var cat_id = $(this).attr("category-id");
 				getAllTagsMedia(cat_id, homeGrid);
 				grid_current_pos = 0;
 				current_tab = $(this).attr("tab-pos");
+				$(this).blur();
 			});
 
 	getAllTagsMedia($(".mdl-layout__tab").first().attr("category-id"),
