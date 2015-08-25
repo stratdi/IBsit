@@ -1,5 +1,5 @@
-var IBlatitude = 39.8696384;
-var IBlongitude = 1.3550432;
+var IBlatitude = 39.8316614;
+var IBlongitude = 2.948837;
 
 // var IBlatitude = 39.534178900000000000;
 // var IBlongitude = 2.857710499999939000;

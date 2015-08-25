@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/IBsit2" version="1.0.0" viewmodes="maximized">
+    <access origin="*" subdomains="true"></access>
     <tizen:application id="VovwmUlPym.IBsit2" package="VovwmUlPym" required_version="2.3"/>
     <content src="index.html"/>
     <tizen:content-security-policy>
 		script-src: 'self'
 	</tizen:content-security-policy>
-	<access origin='*' subdomains='true'/>
-	
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://www.samsungdforum.com/feature/Gesture"/>
     <feature name="http://www.samsungdforum.com/feature/Mouse"/>
-    <icon src="icon.png"/>
-    <name>IBsit2</name>
+    <icon src="IBsit-logo.png" height="117" width="117"/>
+    <name>IBsit</name>
     <tizen:privilege name="http://tizen.org/privilege/tv.audio"/>
     <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
     <tizen:profile name="tv"/>

@@ -51,6 +51,8 @@ function createMediaPlayer(id) {
 
 // VIDEO PLAYER
 function loadVideo(id) {
+	$(".video-controls").hide();
+	$("#info-media").css("opacity", "0");
 	$("video").show();
 	$("#player-loading").show();
 	$("video").get(0).src = url_media_video.replace("{id}", id);
@@ -68,12 +70,9 @@ function stopVideo() {
 }
 
 function loadPano(id) {
+	$("#info-media").css("opacity", "0");
 	loadPanoImage(id);
 	animate();
-}
-
-function stopPano(){
-	
 }
 
 function trackingLoad(response) {
@@ -87,10 +86,11 @@ function trackingLoad(response) {
 		draggable : false,
 		scrollwheel : false,
 	};
-
+	
 	var map = new google.maps.Map($("#map-tracking").get(0), optionsMap);
 
 	getGpx(id_current_media, map);
+	
 }
 
 function mapLoad(response) {
@@ -149,9 +149,7 @@ function playerActions() {
 	$("#replay").hide();
 
 	$("#play").click(function() {
-		$("video")[0].play();
-		$(this).hide();
-		$("#pause").show();
+		playVideo();
 	});
 
 	$("#replay").click(function() {
@@ -176,19 +174,19 @@ function playerActions() {
 	});
 
 	$(".video-controls").hide();
-
-//	var i = null;
-//	$("body").mousemove(function() {
-//		
-//		if ($("video").get(0).currentSrc) {
-//			clearTimeout(i);
-//			$(".video-controls").fadeIn("fast");
-//			i = setTimeout('$(".video-controls").fadeOut("fast");', 2000);
-//		}
-//		
-//	});
-
 	$("#info-media").css("opacity", "0");
+}
+
+function playVideo(){
+	$("video")[0].play();
+	$("#play").hide();
+	$("#pause").show();
+}
+
+function pauseVideo(){
+	$("video")[0].pause();
+	$("#pause").hide();
+	$("#play").show();
 }
 
 function rewind() {
@@ -208,5 +206,3 @@ function forward() {
 	$("#replay").hide();
 	$("#pause").show();
 }
-
-// PANORAMA SPHERE PLAYER

@@ -12,7 +12,7 @@ var KEY_EXIT = 10182;
 
 var KEY_REWIND = 412;
 var KEY_FORWARD = 417;
-var KEY_PLAY = 145;
+var KEY_PLAY = 415;
 var KEY_PAUSE = 19;
 var KEY_PLAYPAUSE = 10252;
 var KEY_STOP = 413;

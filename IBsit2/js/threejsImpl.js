@@ -4,6 +4,8 @@ var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon
 
 var animation, mesh, geometry, material, texture;
 
+var right_mov = true;
+
 function initThree() {
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera(75, window.innerWidth
@@ -34,6 +36,7 @@ function loadPanoImage(id) {
 		initThree();
 	}
 
+	right_mov = true;
 	$("#video").hide();
 	$(".video-controls").hide();
 	$("canvas").show();
@@ -47,23 +50,26 @@ function loadPanoImage(id) {
 		$("#player-loading").hide();
 	});
 
-
 	mesh.material.needsUpdate = true;
 	loadPanoMouseEvents();
+
+	getMedia(id, function(response) {
+		mapLoad(response);
+	});
 }
 
 function loadPanoMouseEvents() {
 	// Eventos de mouse
-	$(document).bind('mousedown',onDocumentMouseDown);
+	$(document).bind('mousedown', onDocumentMouseDown);
 	$(document).bind('mousemove', onDocumentMouseMove);
-	$(document).bind('mouseup',onDocumentMouseUp);
+	$(document).bind('mouseup', onDocumentMouseUp);
 	$(document).bind('resize', onWindowResize);
 }
 
-function unloadPanoMouseEvents(){
-	$(document).unbind('mousedown',onDocumentMouseDown);
+function unloadPanoMouseEvents() {
+	$(document).unbind('mousedown', onDocumentMouseDown);
 	$(document).unbind('mousemove', onDocumentMouseMove);
-	$(document).unbind('mouseup',onDocumentMouseUp);
+	$(document).unbind('mouseup', onDocumentMouseUp);
 	$(document).unbind('resize', onWindowResize);
 }
 
@@ -83,10 +89,12 @@ function onDocumentMouseDown(event) {
 }
 
 function panoMoveLeft() {
+	right_mov = false;
 	lon -= 10;
 }
 
 function panoMoveRight() {
+	right_mov = true;
 	lon += 10;
 }
 
@@ -118,6 +126,7 @@ function cancelAnimation() {
 
 	cancelAnimationFrame(animation);
 
+	scene.remove(mesh);
 	mesh.material.map.dispose();
 	mesh.material.dispose();
 	geometry.dispose();
@@ -126,6 +135,7 @@ function cancelAnimation() {
 	mesh.material.map.sourceFile = null;
 	mesh.material.map.mipmaps = null;
 	mesh.material.map = null;
+	animation = null;
 
 	unloadPanoMouseEvents();
 
@@ -136,7 +146,11 @@ function cancelAnimation() {
 function update() {
 
 	if (isUserInteracting === false) {
-		lon += 0.1;
+		if (right_mov) {
+			lon += 0.1;
+		} else {
+			lon -= 0.1;
+		}
 	}
 
 	lat = Math.max(-85, Math.min(85, lat));

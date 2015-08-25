@@ -97,7 +97,7 @@ function getAllCategories(callback) {
 	});
 }
 
-function getGpx(id, map) {
+function getGpx(id, mapGpx) {
 
 	$.ajax({
 		crossDomain : true,
@@ -108,7 +108,11 @@ function getGpx(id, map) {
 			id : id
 		},
 		success : function(xml) {
+
 			if (xml) {
+				$("#map-tracking").css("visibility", "visible");
+				$("#map-tracking").show();
+
 				var points = [];
 				var bounds = new google.maps.LatLngBounds();
 				$(xml).find("trkpt").each(function() {
@@ -125,9 +129,10 @@ function getGpx(id, map) {
 					strokeOpacity : .7,
 					strokeWeight : 4
 				});
-				poly.setMap(map);
+				poly.setMap(mapGpx);
+
 			} else {
-				$("#map-tracking").hide();
+				$("#map-tracking").css("visibility", "hidden");
 			}
 		},
 		error : function(error) {

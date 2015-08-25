@@ -307,6 +307,7 @@ function videoController() {
 
 	$(document).unbind('keydown');
 	$(document).bind('keydown', function(e) {
+
 		switch (e.keyCode) {
 
 		case KEY_REWIND:
@@ -328,31 +329,49 @@ function videoController() {
 			bindControllerFromMenu();
 			stopVideo();
 			break;
+		case KEY_PLAYPAUSE:
+			if ($("video").get(0).paused) {
+				playVideo();
+			} else {
+				pauseVideo();
+			}
+			break;
+		case KEY_PLAY:
+			playVideo();
+			break;
+		case KEY_PAUSE:
+			pauseVideo();
+			break;
 		case KEY_EXIT:
 			tizen.application.getCurrentApplication().exit();
 			break;
+		default:
+			console.log(e.keyCode);
+			break;
 		}
+
 	});
 }
 
 function toggleExtraInfoPlayer() {
 	toggleInfoMap();
+	togglePlayerActions();
 }
 
 function toggleInfoMap() {
-	console.log("toggling");
 	if ($("#info-media").css("opacity") == 0) {
-		console.log("yes!!");
 		$("#info-media").css("opacity", 1);
 	} else {
-		console.log("oh..!!");
-
 		$("#info-media").css("opacity", 0);
 	}
 }
 
 function togglePlayerActions() {
-
+	if ($(".video-controls").is(":visible")) {
+		$(".video-controls").fadeOut(0);
+	} else {
+		$(".video-controls").fadeIn(0);
+	}
 }
 
 // #########################################################
@@ -382,18 +401,14 @@ function panoramicController() {
 			break;
 		case KEY_OK: // OK button
 			break;
+		case KEY_EXTRA:
 		case KEY_INFO: // INFO button
-			if ($("#info-media").css("opacity") == 0) {
-				$("#info-media").css("opacity", 1);
-			} else {
-				$("#info-media").css("opacity", 0);
-			}
+			toggleInfoMap();
 			break;
 		case KEY_STOP:
 		case KEY_RETURN: // RETURN button
 			// menu
 			bindControllerFromMenu();
-			// $("#player").remove();
 			cancelAnimation();
 			break;
 		case KEY_EXIT: // EXIT

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
- <script>
+<script>
 	console.log = function(message) {
 		$('.mdl-layout__drawer-button').append('<p>' + message + '</p>');
 	};
 	console.error = console.debug = console.info = console.log
-</script> 
+</script>
 
 <meta http-equiv="Expires" content="0">
 
@@ -49,6 +49,14 @@
 
 </head>
 <body>
+<?PHP 
+header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' ); 
+header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' ); 
+header( 'Cache-Control: no-store, no-cache, must-revalidate' ); 
+header( 'Cache-Control: post-check=0, pre-check=0', false ); 
+header( 'Pragma: no-cache' ); 
+
+?>
 	<div
 		class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
 		<header class="mdl-layout__header">
@@ -80,7 +88,7 @@
 	</div>
 
 
-	<div id='player' style="display:none;">
+	<div id='player' style="display: none;">
 		<div id='player-loading' class='mdl-spinner mdl-js-spinner is-active'></div>
 		<video id='video' src='' autoplay></video>
 		<div class='video-controls'>
