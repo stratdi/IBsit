@@ -12,7 +12,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>GbNztyLv0jSq6DzhxU29hNpL2z2Lbz1fXy3wNEh+BeU=</DigestValue>
+<DigestValue>Ep4snDmSAxsOXs/4FJ28bAxMOmoyjv4mSsZDZMswuVM=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -44,7 +44,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>tpHAhaXIbmoCkN79uh1XFESeUUvB43JJXzoZsK3hZOU=</DigestValue>
+<DigestValue>MdlFVHk1xJnmmFOk2zl3J19rkfJinEZzjquhu7iuZWk=</DigestValue>
 </Reference>
 <Reference URI="js%2Fajax.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -96,7 +96,7 @@
 </Reference>
 <Reference URI="js%2FthreejsImpl.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>qr4Cbx6T0CmJdAH+PxciAJhvc8L538ClhxeYjtYeXdw=</DigestValue>
+<DigestValue>QVhxG3fBEdTKln7tn6GMNN6ha2rchpulfGRJpB9FHYc=</DigestValue>
 </Reference>
 <Reference URI="mdl%2FLICENSE">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -159,9 +159,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-FUZevB1zrw3Ics9Y5vue/j9bmTok2Fol0xPiWAUWhQ3KcbPsAAISm+hQFONvQhmQn8ljUBNmDWJK
-025Vkh43GVE9KrIfPWWZ2RTfkmbn8u28lo81HhdopYzZfX1J/rohMWiwUWHIjvqR2dYhQxDYUZGk
-hRACnLxS3tP63zab65Y=
+LgtcE521rCH/NPrp1dCaRBtrBq2HHwUqvXIjc19uwRhjFOwSEg/t60LiGW0t4tkNG2RZEZcCT1TE
+K5xg2ePKYgt8eUORnoaf8AgSPT8DE9chHoXgWLpVLDtpycM180s11YAbh4gm96aAebYdL2ozEaVl
+kzbwkQXllhN3lWkFRIM=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

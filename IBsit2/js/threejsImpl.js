@@ -126,7 +126,7 @@ function cancelAnimation() {
 
 	cancelAnimationFrame(animation);
 
-	scene.remove(mesh);
+	//scene.remove(mesh);
 	mesh.material.map.dispose();
 	mesh.material.dispose();
 	geometry.dispose();
@@ -135,7 +135,7 @@ function cancelAnimation() {
 	mesh.material.map.sourceFile = null;
 	mesh.material.map.mipmaps = null;
 	mesh.material.map = null;
-	animation = null;
+	//animation = null;
 
 	unloadPanoMouseEvents();
 

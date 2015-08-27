@@ -40,7 +40,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>tpHAhaXIbmoCkN79uh1XFESeUUvB43JJXzoZsK3hZOU=</DigestValue>
+<DigestValue>MdlFVHk1xJnmmFOk2zl3J19rkfJinEZzjquhu7iuZWk=</DigestValue>
 </Reference>
 <Reference URI="js%2Fajax.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -92,7 +92,7 @@
 </Reference>
 <Reference URI="js%2FthreejsImpl.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>qr4Cbx6T0CmJdAH+PxciAJhvc8L538ClhxeYjtYeXdw=</DigestValue>
+<DigestValue>QVhxG3fBEdTKln7tn6GMNN6ha2rchpulfGRJpB9FHYc=</DigestValue>
 </Reference>
 <Reference URI="mdl%2FLICENSE">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -155,9 +155,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-dg3rhWpvBsnwUFzkE9rEC81viNpB7f6dzJlxsqgVW9UFV74fUWOK0PMSn5Hec2bItsyCvlwAk2eb
-HYy9I039tp1lYBTafFMTi1/7+RgoEBXiFFXyi6N0DohbzBsWqlYVHoxBhjUDe0HiP1ZbBh4VbkdF
-bhVvIeLaJXjsFRqON0M=
+fEPDR8a0EWbPpmBDxpW/qUw1VpohoLaMtZIx5PDoLcsA0gMV9hce9r6IhlX2XH8fn5/aIqVtPDZ+
+U54EG5pSV9fVusruRdnxjNCVeBFktZ9Q38ERh99YSmH0Nk2pe9Le2GhvT0XQ8hqbl9rVJhzcx4o7
+kQ9tZoGb50BymC/YhAw=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
