@@ -12,7 +12,7 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>Ep4snDmSAxsOXs/4FJ28bAxMOmoyjv4mSsZDZMswuVM=</DigestValue>
+<DigestValue>ZS/BT5cnZFX5gh3YOBCLJChHEMRA5bOE3PItfLUMDDg=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -60,7 +60,7 @@
 </Reference>
 <Reference URI="js%2Fgrid.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>spY1V8EWqL8+yZwxYpIqFHdcOqVXZFY7yBeOI9ACPDo=</DigestValue>
+<DigestValue>NqQb4I+epbAmkDM+i2CRO02RenujRPsjxqsGlkZVoqE=</DigestValue>
 </Reference>
 <Reference URI="js%2Fjquery-git2.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -159,9 +159,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-LgtcE521rCH/NPrp1dCaRBtrBq2HHwUqvXIjc19uwRhjFOwSEg/t60LiGW0t4tkNG2RZEZcCT1TE
-K5xg2ePKYgt8eUORnoaf8AgSPT8DE9chHoXgWLpVLDtpycM180s11YAbh4gm96aAebYdL2ozEaVl
-kzbwkQXllhN3lWkFRIM=
+V7u2Wzwn2qXNM2ywcOioAnmCw8uo70WEzoE3MDd96J17iF8dAkJDOqO/vTxAe/zxpTm8KU+fBnrQ
+67droIunoQce8W8dTCv2Q9zTm68OMOpklJTLwtLckhpK4k9cluoI91WKfIivsUjDP8tFYfjsDhSJ
+CbAOx1jGD0zWS2w9PTY=
 </SignatureValue>
 <KeyInfo>
 <X509Data>
