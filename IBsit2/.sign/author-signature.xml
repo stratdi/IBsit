@@ -44,7 +44,7 @@
 </Reference>
 <Reference URI="js%2Fajax.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>9BsBXB6Z1XQ4siwoHfEjLRQf0F/vsVqPh36NqWIsaiw=</DigestValue>
+<DigestValue>PZAeXklJo4OG8FQLk0JrJpN5rmYfvBsSX1fGhtu1iEg=</DigestValue>
 </Reference>
 <Reference URI="js%2Fcategories.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -155,9 +155,9 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-A2jyHoB33locIK3QiI6Avt1L6sokcO7tFlauRZM8/1hjNDsq9Ebq6S87uh3+C0hMiO+K9GnSoP5R
-OX1XmQRaK7I/s9WDLygE861pRjYmZkEr9oH+kZWlththcU8DlShAIIEU5fhRELK2Z20OPjUgwcvb
-+yYGsasZwrfMLh1QljI=
+Ss3NYspvmWix+pAuCMextleViNa03Z3U72AO9KVIBeZsa6niTzfBm9u1KMMpkiUOY2DqNKMQQWaa
+bFnUJLtc0djr2W+hn+mAmpP4rn2wMfj9k4EIo5760Bqb++05t1CiWXmwrWhZgIP3YoOGyPwtZzDB
+sB0Ql/00Cz2zGP0Dw2c=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

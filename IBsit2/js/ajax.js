@@ -123,6 +123,7 @@ function getGpx(id, mapGpx) {
 					bounds.extend(p);
 				});
 
+				mapGpx.fitBounds(bounds);
 				var poly = new google.maps.Polyline({
 					path : points,
 					strokeColor : "#FF00AA",
